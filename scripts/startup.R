@@ -59,6 +59,8 @@ if (!require('xlsx', quietly = F)) install.packages("xlsx")
 # package ‘xlsxjars’ successfully unpacked and MD5 sums checked
 # package ‘xlsx’ successfully unpacked and MD5 sums checked
 
+if (!require('openxlsx', quietly = F)) install.packages("openxlsx")
+
 if (!require('gplots', quietly = F)) install.packages("gplots")
 # package ‘gtools’ successfully unpacked and MD5 sums checked
 # package ‘gdata’ successfully unpacked and MD5 sums checked

@@ -10,6 +10,8 @@ The scripts directory contains some usefull common scripts :
 * startup.R : libraries to install in a new R install
 * resetPar.R : reset to default the graphic options
 * add_jre_to_java_home.R : jre in the **JAVA_HOME** env variable
+* microbenchmark.R : a sample script to illustrate how to microbenchmark with R
+* ram_profile.R : a sample script to illustrate how to monitor RAM/CPU usage
 
 # Template
 A template directory for R scripts and other files :

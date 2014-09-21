@@ -1,3 +1,10 @@
+# =============================================
+# A startup script for a new R installation. 
+# This script contains install command for a 
+# list of usefull R packages.
+#
+# ==============================================
+
 # http://www.r-statistics.com/2013/06/top-100-r-packages-for-2013-jan-may/
 
 install.packages("devtools") 

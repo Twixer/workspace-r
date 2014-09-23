@@ -1,3 +1,12 @@
+# =============================================================================
+#
+# A script to illustrate a gradient word cloud by Tyler Rinker.
+# ref : http://trinker.github.io/blah/2012/11/17/Gradient-Word-Clouds/
+#
+# =============================================================================
+
+
+# 
 libraryt("qdap"); library(wordcloud); library(qdap); library(plotrix)
 
 # download transcript of the debate to working directory

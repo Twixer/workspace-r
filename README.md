@@ -13,8 +13,16 @@ The scripts directory contains some usefull common scripts :
 * microbenchmark.R : a sample script to illustrate how to microbenchmark with R
 * ram_profile.R : a sample script to illustrate how to monitor RAM/CPU usage
 
-# Template
+# Templates
 A template directory for R scripts and other files :
 
 * getting_cleaning_saving_data.R : a template R script in order to perform first basics operations on data (get, clean, save)
 
+# References
+
+## R
+
+  R Core Team (2014). R: A language and environment
+  for statistical computing. R Foundation for
+  Statistical Computing, Vienna, Austria. URL
+  http://www.R-project.org/.

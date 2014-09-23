@@ -24,6 +24,9 @@ if (!require('devtools', quietly = F))  install.packages("devtools")
 # package ‘digest’ successfully unpacked and MD5 sums checked
 # package ‘devtools’ successfully unpacked and MD5 sums checked
 
+#https://github.com/trinker/pacman/
+install_github("pacman", "trinker")
+
 # http://www.r-statistics.com/2014/08/simpler-r-coding-with-pipes-the-present-and-future-of-the-magrittr-package/
 if (!require('magrittr', quietly = F)) install.packages("magrittr") 
 
@@ -80,3 +83,33 @@ if (!require('installr', quietly = F)) install.packages("installr")
 
 # http://www.inside-r.org/packages/cran/log4r/docs/log4r
 if (!require('log4r', quietly = F)) install.packages("log4r")
+
+# http://trinker.github.io/qdap/vignettes/qdap_vignette.html
+install_github("qdap", "trinker")
+# package ‘RJSONIO’ successfully unpacked and MD5 sums checked
+# package ‘bibtex’ successfully unpacked and MD5 sums checked
+# package ‘lubridate’ successfully unpacked and MD5 sums checked
+# package ‘RefManageR’ successfully unpacked and MD5 sums checked
+# package ‘openNLPdata’ successfully unpacked and MD5 sums checked
+# package ‘knitcitations’ successfully unpacked and MD5 sums checked
+# package ‘slam’ successfully unpacked and MD5 sums checked
+# package ‘qdapDictionaries’ successfully unpacked and MD5 sums checked
+# package ‘qdapRegex’ successfully unpacked and MD5 sums checked
+# package ‘qdapTools’ successfully unpacked and MD5 sums checked
+# package ‘chron’ successfully unpacked and MD5 sums checked
+# package ‘gridExtra’ successfully unpacked and MD5 sums checked
+# package ‘igraph’ successfully unpacked and MD5 sums checked
+# package ‘NLP’ successfully unpacked and MD5 sums checked
+# package ‘openNLP’ successfully unpacked and MD5 sums checked
+# package ‘plotrix’ successfully unpacked and MD5 sums checked
+# package ‘reports’ successfully unpacked and MD5 sums checked
+# package ‘stringdist’ successfully unpacked and MD5 sums checked
+# package ‘tm’ successfully unpacked and MD5 sums checked
+# package ‘venneuler’ successfully unpacked and MD5 sums checked
+# package ‘wordcloud’ successfully unpacked and MD5 sums checked
+# package ‘koRpus’ successfully unpacked and MD5 sums checked
+# package ‘lda’ successfully unpacked and MD5 sums checked
+# package ‘proxy’ successfully unpacked and MD5 sums checked
+# package ‘stringi’ successfully unpacked and MD5 sums checked
+# package ‘SnowballC’ successfully unpacked and MD5 sums checked
+# package ‘testthat’ successfully unpacked and MD5 sums checked

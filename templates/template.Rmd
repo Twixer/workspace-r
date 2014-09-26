@@ -1,0 +1,23 @@
+---
+title: "Rmd Template"
+author: "Twixer"
+date: "Day, Month xx, 2014"
+output: 
+    html_document :
+    toc: true
+    theme: united
+markdown_github :
+    fig_retina: true
+---
+    
+``` {r global_options, echo=F}
+library(knitr,quietly = T)
+opts_chunk$set(echo= TRUE, 
+               results='asis',
+               cache=T,
+               cache.path="cache/",
+               fig.path="figures/")
+```
+
+An R markdown template file.
+

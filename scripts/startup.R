@@ -113,3 +113,11 @@ install_github("qdap", "trinker")
 # package ‘stringi’ successfully unpacked and MD5 sums checked
 # package ‘SnowballC’ successfully unpacked and MD5 sums checked
 # package ‘testthat’ successfully unpacked and MD5 sums checked
+
+# http://www.r-bloggers.com/how-to-publish-r-and-ggplot2-to-the-web/
+install_github("ropensci/plotly")
+
+# http://www.r-bloggers.com/seeing-the-daylight-with-r/
+if (!require('maptools', quietly = F)) install.packages("maptools")
+
+if (!require('fortunes', quietly = F)) install.packages("fortunes")

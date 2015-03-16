@@ -121,3 +121,10 @@ install_github("ropensci/plotly")
 if (!require('maptools', quietly = F)) install.packages("maptools")
 
 if (!require('fortunes', quietly = F)) install.packages("fortunes")
+
+# Text Minning
+if (!require('tm', quietly = F)) install.packages("tm")
+if (!require('openNLP', quietly = F)) install.packages("openNLP")
+
+
+

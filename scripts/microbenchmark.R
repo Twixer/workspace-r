@@ -11,8 +11,7 @@ op <- microbenchmark(
     PLYR=ddply(mtcars, .(cyl, gear), summarise, 
                output = mean(hp)),
     AGGR=aggregate(hp ~ cyl + gear, mtcars, mean),
-    TAPPLY = tapply(mtcars$hp, interaction(mtcars$cyl, 
-                                           mtcars$gear), mean),
+    TAPPLY = tapply(mtcars$hp, interaction(mtcars$cyl, mtcars$gear), mean),
     times=1000L)
 
 #standard data frame of the output
@@ -24,3 +23,4 @@ boxplot(op)
 #nice log plot of the output
 library(ggplot2) 
 qplot(y=time, data=op, colour=expr) + scale_y_log10()
+

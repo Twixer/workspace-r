@@ -7,7 +7,7 @@
 
 
 # 
-libraryt("qdap"); library(wordcloud); library(qdap); library(plotrix)
+library("qdap"); library(wordcloud); library(qdap); library(plotrix)
 
 # download transcript of the debate to working directory
 # url_dl(pres.deb1.docx)

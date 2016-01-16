@@ -1,4 +1,6 @@
 
+setwd("d:/applis/workspace-r/tm_jseguela/")
+
 ####################################
 ###  Clustering de textes avec R ###
 ####################################
@@ -243,7 +245,8 @@ plot(1:n, HCLUST$height[n:1], type = "b",
 ### Coupure
 ###
 
-k = 8 # nombre de groupes
+#k = 8 # nombre de groupes
+k= 4
 plot(HCLUST)
 rect.hclust(HCLUST, k=k, border="red")
 

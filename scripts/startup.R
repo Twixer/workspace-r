@@ -166,4 +166,5 @@ if (!require('SnowballC', quietly = F)) install.packages("SnowballC")
 if (!require('lsa', quietly = F)) install.packages("lsa")
 if (!require('proxy', quietly = F)) install.packages("proxy")
 
-
+# https://github.com/cuche27/campagnePresidentielle
+if (!require('FactoMineR', quietly = F)) install.packages("FactoMineR")

@@ -10,6 +10,11 @@
 #
 # =============================================================================
 
+
+# ----------------------------------------------------------------------
+# Dev
+# ----------------------------------------------------------------------
+
 # http://www.r-statistics.com/2013/06/top-100-r-packages-for-2013-jan-may/
 if (!require('devtools', quietly = F))  install.packages("devtools") 
 # package ‘magrittr’ successfully unpacked and MD5 sums checked
@@ -38,45 +43,7 @@ if (!require('devtools', quietly = F))  install.packages("devtools")
 #install_github("trinker/pacman")
 if (!require('pacman', quietly = F))  install.packages("pacman")
 
-# http://www.r-statistics.com/2014/08/simpler-r-coding-with-pipes-the-present-and-future-of-the-magrittr-package/
-#if (!require('magrittr', quietly = F)) install.packages("magrittr") 
-
-if (!require('Amelia', quietly = F)) install.packages("Amelia") 
-# package ‘RcppArmadillo’ successfully unpacked and MD5 sums checked
-# package ‘Amelia’ successfully unpacked and MD5 sums checked
-
-if (!require('dplyr', quietly = F)) install.packages("dplyr")
-# package ‘assertthat’ successfully unpacked and MD5 sums checked
-# package ‘lazyeval’ successfully unpacked and MD5 sums checked
-# package ‘DBI’ successfully unpacked and MD5 sums checked
-# package ‘dplyr’ successfully unpacked and MD5 sums checked
-
 if (!require('rJava', quietly = F)) install.packages("rJava") 
-
-if (!require('ggplot2', quietly = F)) install.packages("ggplot2") 
-# package ‘colorspace’ successfully unpacked and MD5 sums checked
-# package ‘RColorBrewer’ successfully unpacked and MD5 sums checked
-# package ‘dichromat’ successfully unpacked and MD5 sums checked
-# package ‘munsell’ successfully unpacked and MD5 sums checked
-# package ‘labeling’ successfully unpacked and MD5 sums checked
-# package ‘gtable’ successfully unpacked and MD5 sums checked
-# package ‘plyr’ successfully unpacked and MD5 sums checked
-# package ‘reshape2’ successfully unpacked and MD5 sums checked
-# package ‘scales’ successfully unpacked and MD5 sums checked
-# package ‘ggplot2’ successfully unpacked and MD5 sums checked
-
-if (!require('xtable', quietly = F)) install.packages("xtable")
-
-if (!require('xlsx', quietly = F)) install.packages("xlsx")
-# package ‘xlsxjars’ successfully unpacked and MD5 sums checked
-# package ‘xlsx’ successfully unpacked and MD5 sums checked
-
-if (!require('openxlsx', quietly = F)) install.packages("openxlsx")
-
-if (!require('gplots', quietly = F)) install.packages("gplots")
-# package ‘gtools’ successfully unpacked and MD5 sums checked
-# package ‘gdata’ successfully unpacked and MD5 sums checked
-# package ‘gplots’ successfully unpacked and MD5 sums checked
 
 # http://projecttemplate.net/getting_started.html
 if (!require('ProjectTemplate', quietly = F)) install.packages("ProjectTemplate")
@@ -93,7 +60,71 @@ if (!require('installr', quietly = F)) install.packages("installr")
 # http://www.inside-r.org/packages/cran/log4r/docs/log4r
 if (!require('log4r', quietly = F)) install.packages("log4r")
 
+if (!require('fortunes', quietly = F)) install.packages("fortunes")
+
+# ----------------------------------------------------------------------
+# Data manipulation
+# ----------------------------------------------------------------------
+
+if (!require('Amelia', quietly = F)) install.packages("Amelia") 
+# package ‘RcppArmadillo’ successfully unpacked and MD5 sums checked
+# package ‘Amelia’ successfully unpacked and MD5 sums checked
+
+if (!require('dplyr', quietly = F)) install.packages("dplyr")
+# package ‘assertthat’ successfully unpacked and MD5 sums checked
+# package ‘lazyeval’ successfully unpacked and MD5 sums checked
+# package ‘DBI’ successfully unpacked and MD5 sums checked
+# package ‘dplyr’ successfully unpacked and MD5 sums checked
+
+# ----------------------------------------------------------------------
+# Graphic librairies
+# ----------------------------------------------------------------------
+
+if (!require('ggplot2', quietly = F)) install.packages("ggplot2") 
+# package ‘colorspace’ successfully unpacked and MD5 sums checked
+# package ‘RColorBrewer’ successfully unpacked and MD5 sums checked
+# package ‘dichromat’ successfully unpacked and MD5 sums checked
+# package ‘munsell’ successfully unpacked and MD5 sums checked
+# package ‘labeling’ successfully unpacked and MD5 sums checked
+# package ‘gtable’ successfully unpacked and MD5 sums checked
+# package ‘plyr’ successfully unpacked and MD5 sums checked
+# package ‘reshape2’ successfully unpacked and MD5 sums checked
+# package ‘scales’ successfully unpacked and MD5 sums checked
+# package ‘ggplot2’ successfully unpacked and MD5 sums checked
+
+if (!require('gplots', quietly = F)) install.packages("gplots")
+# package ‘gtools’ successfully unpacked and MD5 sums checked
+# package ‘gdata’ successfully unpacked and MD5 sums checked
+# package ‘gplots’ successfully unpacked and MD5 sums checked
+
+# https://plot.ly/r/
+if (!require('plotly', quietly = F)) install.packages("plotly")
+# package ‘htmltools’ successfully unpacked and MD5 sums checked
+# package ‘yaml’ successfully unpacked and MD5 sums checked
+# package ‘viridis’ successfully unpacked and MD5 sums checked
+# package ‘base64enc’ successfully unpacked and MD5 sums checked
+# package ‘htmlwidgets’ successfully unpacked and MD5 sums checked
+# package ‘plotly’ successfully unpacked and MD5 sums checked
+
+# http://www.r-bloggers.com/seeing-the-daylight-with-r/
+if (!require('maptools', quietly = F)) install.packages("maptools")
+
+# ----------------------------------------------------------------------
+# XML librairies
+# ----------------------------------------------------------------------
+
+if (!require('xtable', quietly = F)) install.packages("xtable")
+
+if (!require('xlsx', quietly = F)) install.packages("xlsx")
+# package ‘xlsxjars’ successfully unpacked and MD5 sums checked
+# package ‘xlsx’ successfully unpacked and MD5 sums checked
+
+if (!require('openxlsx', quietly = F)) install.packages("openxlsx")
+
+# ----------------------------------------------------------------------
 # Text Mining, Dialog Analysis
+# ----------------------------------------------------------------------
+
 # http://trinker.github.io/qdap/vignettes/qdap_vignette.html
 if (!require('qdap', quietly = F)) install.packages("qdap")
 # package ‘iterators’ successfully unpacked and MD5 sums checked
@@ -131,16 +162,8 @@ if (!require('qdap', quietly = F)) install.packages("qdap")
 # package ‘XML’ successfully unpacked and MD5 sums checked
 # package ‘qdap’ successfully unpacked and MD5 sums checked
 
-# https://plot.ly/r/
-if (!require('plotly', quietly = F)) install.packages("plotly")
-# package ‘htmltools’ successfully unpacked and MD5 sums checked
-# package ‘yaml’ successfully unpacked and MD5 sums checked
-# package ‘viridis’ successfully unpacked and MD5 sums checked
-# package ‘base64enc’ successfully unpacked and MD5 sums checked
-# package ‘htmlwidgets’ successfully unpacked and MD5 sums checked
-# package ‘plotly’ successfully unpacked and MD5 sums checked
+if (!require('SnowballC', quietly = F)) install.packages("SnowballC")
+if (!require('lsa', quietly = F)) install.packages("lsa")
+if (!require('proxy', quietly = F)) install.packages("proxy")
 
-# http://www.r-bloggers.com/seeing-the-daylight-with-r/
-if (!require('maptools', quietly = F)) install.packages("maptools")
 
-if (!require('fortunes', quietly = F)) install.packages("fortunes")

@@ -1,0 +1,2755 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="affaire" targetNamespace="fr.grdf.distribution.services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="fr.grdf.distribution.services" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<wsdl:documentation>COPYRIGHT GRDF</wsdl:documentation>
+  <wsdl:types>
+<xs:schema xmlns:tns="fr.grdf.distribution.services" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="fr.grdf.distribution.services">
+  <xs:element name="abandonnerAffaire" type="tns:abandonnerAffaire"/>
+  <xs:element name="abandonnerAffaireResponse" type="tns:abandonnerAffaireResponse"/>
+  <xs:element name="commune" type="tns:commune"/>
+  <xs:element name="countAffairesEnCoursByUser" type="tns:countAffairesEnCoursByUser"/>
+  <xs:element name="countAffairesEnCoursByUserResponse" type="tns:countAffairesEnCoursByUserResponse"/>
+  <xs:element name="countNbAffairesByLotId" type="tns:countNbAffairesByLotId"/>
+  <xs:element name="countNbAffairesByLotIdResponse" type="tns:countNbAffairesByLotIdResponse"/>
+  <xs:element name="creerAffaire" type="tns:creerAffaire"/>
+  <xs:element name="creerAffaireEtPoint" type="tns:creerAffaireEtPoint"/>
+  <xs:element name="creerAffaireEtPointResponse" type="tns:creerAffaireEtPointResponse"/>
+  <xs:element name="creerAffaireResponse" type="tns:creerAffaireResponse"/>
+  <xs:element name="delotirAffairesByLotKId" type="tns:delotirAffairesByLotKId"/>
+  <xs:element name="delotirAffairesByLotKIdResponse" type="tns:delotirAffairesByLotKIdResponse"/>
+  <xs:element name="delotirAffairesByPoints" type="tns:delotirAffairesByPoints"/>
+  <xs:element name="delotirAffairesByPointsResponse" type="tns:delotirAffairesByPointsResponse"/>
+  <xs:element name="deselectionnerPHSite" type="tns:deselectionnerPHSite"/>
+  <xs:element name="deselectionnerPHSiteResponse" type="tns:deselectionnerPHSiteResponse"/>
+  <xs:element name="getAffaireById" type="tns:getAffaireById"/>
+  <xs:element name="getAffaireByIdResponse" type="tns:getAffaireByIdResponse"/>
+  <xs:element name="getAffaireByTache" type="tns:getAffaireByTache"/>
+  <xs:element name="getAffaireByTacheResponse" type="tns:getAffaireByTacheResponse"/>
+  <xs:element name="getAffaireParLotKEtManager" type="tns:getAffaireParLotKEtManager"/>
+  <xs:element name="getAffaireParLotKEtManagerResponse" type="tns:getAffaireParLotKEtManagerResponse"/>
+  <xs:element name="getAffairesByIds" type="tns:getAffairesByIds"/>
+  <xs:element name="getAffairesByIdsResponse" type="tns:getAffairesByIdsResponse"/>
+  <xs:element name="getAffairesByPointHaut" type="tns:getAffairesByPointHaut"/>
+  <xs:element name="getAffairesByPointHautAndStatuts" type="tns:getAffairesByPointHautAndStatuts"/>
+  <xs:element name="getAffairesByPointHautAndStatutsResponse" type="tns:getAffairesByPointHautAndStatutsResponse"/>
+  <xs:element name="getAffairesByPointHautResponse" type="tns:getAffairesByPointHautResponse"/>
+  <xs:element name="getAffairesByZdr" type="tns:getAffairesByZdr"/>
+  <xs:element name="getAffairesByZdrResponse" type="tns:getAffairesByZdrResponse"/>
+  <xs:element name="getAffairesEnCoursByUser" type="tns:getAffairesEnCoursByUser"/>
+  <xs:element name="getAffairesEnCoursByUserPaginate" type="tns:getAffairesEnCoursByUserPaginate"/>
+  <xs:element name="getAffairesEnCoursByUserPaginateResponse" type="tns:getAffairesEnCoursByUserPaginateResponse"/>
+  <xs:element name="getAffairesEnCoursByUserResponse" type="tns:getAffairesEnCoursByUserResponse"/>
+  <xs:element name="getAffairesRealisees" type="tns:getAffairesRealisees"/>
+  <xs:element name="getAffairesRealiseesResponse" type="tns:getAffairesRealiseesResponse"/>
+  <xs:element name="getAffairesSuperviseesByUser" type="tns:getAffairesSuperviseesByUser"/>
+  <xs:element name="getAffairesSuperviseesByUserResponse" type="tns:getAffairesSuperviseesByUserResponse"/>
+  <xs:element name="getEtudesCByZdrId" type="tns:getEtudesCByZdrId"/>
+  <xs:element name="getEtudesCByZdrIdResponse" type="tns:getEtudesCByZdrIdResponse"/>
+  <xs:element name="lotirAffaires" type="tns:lotirAffaires"/>
+  <xs:element name="lotirAffairesResponse" type="tns:lotirAffairesResponse"/>
+  <xs:element name="rechercheAffaireByNumero" type="tns:rechercheAffaireByNumero"/>
+  <xs:element name="rechercheAffaireByNumeroResponse" type="tns:rechercheAffaireByNumeroResponse"/>
+  <xs:element name="updateStatutAffaire" type="tns:updateStatutAffaire"/>
+  <xs:element name="updateStatutAffaireResponse" type="tns:updateStatutAffaireResponse"/>
+  <xs:element name="updateStatutAndEntiteByLot" type="tns:updateStatutAndEntiteByLot"/>
+  <xs:element name="updateStatutAndEntiteByLotResponse" type="tns:updateStatutAndEntiteByLotResponse"/>
+  <xs:complexType name="updateStatutAffaire">
+    <xs:sequence>
+      <xs:element name="affaireId" type="xs:long"/>
+      <xs:element minOccurs="0" name="statut" type="tns:enumStatutAffaire"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="contexte">
+    <xs:complexContent>
+      <xs:extension base="tns:sidContexte">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="selectedRegion" type="tns:region"/>
+          <xs:element minOccurs="0" name="selectedUnite" type="tns:sidUnite"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sidContexte">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractContexte">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="codeProcessus" type="xs:string"/>
+          <xs:element minOccurs="0" name="originalSessionId" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="abstractContexte">
+    <xs:complexContent>
+      <xs:extension base="tns:edfAbstractBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="correlationId" type="xs:string"/>
+          <xs:element minOccurs="0" name="utilisateur" type="tns:utilisateur"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="edfAbstractBean">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="region">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codeRegion" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="grdfAbstractDatabaseBean">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateCreation" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateModification" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="nniCreation" type="xs:string"/>
+          <xs:element minOccurs="0" name="nniModification" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="grdfAbstractBean">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="sidUnite">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractDivision">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codeUnite" type="xs:string"/>
+          <xs:element minOccurs="0" name="nomComplet" type="xs:string"/>
+          <xs:element minOccurs="0" name="nomCourt" type="xs:string"/>
+          <xs:element minOccurs="0" name="regionCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="regionID" type="xs:long"/>
+          <xs:element minOccurs="0" name="regionNom" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="abstractDivision">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:string"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="utilisateur">
+    <xs:complexContent>
+      <xs:extension base="tns:edfAbstractBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="identifiant" type="xs:string"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="prenom" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sidUtilisateur">
+    <xs:complexContent>
+      <xs:extension base="tns:utilisateur">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="applicationsDisponibles" nillable="true" type="tns:enumSIDApplication"/>
+          <xs:element minOccurs="0" name="creationDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="creationUtilisateur" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateDebutHabilitation" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateDerniereConnexion" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateFinHabilitation" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="entite" type="tns:sidEntite"/>
+          <xs:element minOccurs="0" name="genre" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="habilitations" nillable="true" type="tns:sidHabilitation"/>
+          <xs:element name="idHisto" type="xs:long"/>
+          <xs:element minOccurs="0" name="mail" type="xs:string"/>
+          <xs:element minOccurs="0" name="majDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="majUtilisateur" type="xs:string"/>
+          <xs:element name="manager" type="xs:boolean"/>
+          <xs:element name="national" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="organisation1" type="xs:string"/>
+          <xs:element minOccurs="0" name="organisation2" type="xs:string"/>
+          <xs:element minOccurs="0" name="organisation3" type="xs:string"/>
+          <xs:element minOccurs="0" name="organisation4" type="xs:string"/>
+          <xs:element minOccurs="0" name="porteClesEcran" type="tns:porteCles"/>
+          <xs:element name="signalMaterielInconnu" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="sousTraitant" type="xs:string"/>
+          <xs:element name="supprimeGaia" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="telephone" type="xs:string"/>
+          <xs:element minOccurs="0" name="telephoneMobile" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sidEntite">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractGedBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="adresse" type="xs:string"/>
+          <xs:element minOccurs="0" name="codeFournisseur" type="xs:string"/>
+          <xs:element name="concentrateur" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="contact1" type="tns:contact"/>
+          <xs:element minOccurs="0" name="contact2" type="tns:contact"/>
+          <xs:element minOccurs="0" name="contact3" type="tns:contact"/>
+          <xs:element minOccurs="0" name="contact4" type="tns:contact"/>
+          <xs:element minOccurs="0" name="entiteMere" type="tns:sidEntite"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="idPrestataire" type="xs:long"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="lieuxDeLivraison" nillable="true" type="tns:lieuDeLivraison"/>
+          <xs:element name="national" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="raisonSociale" type="tns:tableRef"/>
+          <xs:element name="societeMere" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="statut" type="tns:enumStatutEntite"/>
+          <xs:element minOccurs="0" name="telephone" type="xs:string"/>
+          <xs:element minOccurs="0" name="type" type="tns:tableRef"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ucfs" nillable="true" type="tns:sidUnite"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="abstractGedBean">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="contact">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fonction" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="idEntite" type="xs:long"/>
+          <xs:element minOccurs="0" name="isActif" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="isEmbarque" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="mail" type="xs:string"/>
+          <xs:element minOccurs="0" name="mobile" type="xs:string"/>
+          <xs:element minOccurs="0" name="natureContact" type="tns:natureContact"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="prenom" type="xs:string"/>
+          <xs:element minOccurs="0" name="telephone" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="natureContact">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element name="actif" type="xs:boolean"/>
+          <xs:element name="embarque" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="libelle" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="lieuDeLivraison">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="adresse" type="xs:string"/>
+          <xs:element minOccurs="0" name="codeReference" type="xs:string"/>
+          <xs:element minOccurs="0" name="consigneLivraison" type="xs:string"/>
+          <xs:element minOccurs="0" name="contact" type="xs:string"/>
+          <xs:element minOccurs="0" name="entite" type="tns:sidEntite"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="libelle" type="xs:string"/>
+          <xs:element name="statut" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="telephone" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="unites" nillable="true" type="tns:sidUnite"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="tableRef">
+    <xs:complexContent>
+      <xs:extension base="tns:edfAbstractBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="libelle" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="affaire">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractGedBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chargeAffaire" type="tns:sidUtilisateur"/>
+          <xs:element minOccurs="0" name="commandePresta" type="xs:string"/>
+          <xs:element minOccurs="0" name="commentComImes" type="xs:string"/>
+          <xs:element minOccurs="0" name="commentHorsBordereau" type="xs:string"/>
+          <xs:element minOccurs="0" name="commentObtSite" type="xs:string"/>
+          <xs:element minOccurs="0" name="commentaireAnnulation" type="xs:string"/>
+          <xs:element minOccurs="0" name="commentaires" type="xs:string"/>
+          <xs:element name="controleQualiteDemande" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="dateLeveeDesReserves" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="datePremiereReception" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="entite" type="tns:sidEntite"/>
+          <xs:element minOccurs="0" name="eotp" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="etapes" nillable="true" type="tns:etape"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="forfaitsOptions" nillable="true" type="tns:forfaitOption"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="idCommHorsBordereau" type="xs:string"/>
+          <xs:element minOccurs="0" name="idCommandeRapsodie" type="xs:string"/>
+          <xs:element minOccurs="0" name="idCommandeRapsodieImes" type="xs:string"/>
+          <xs:element name="interventionRequise" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="lotK" type="tns:lotK"/>
+          <xs:element minOccurs="0" name="manager" type="tns:sidUtilisateur"/>
+          <xs:element minOccurs="0" name="natureAffaire" type="tns:tableRef"/>
+          <xs:element minOccurs="0" name="numero" type="xs:string"/>
+          <xs:element minOccurs="0" name="objPpal" type="tns:point"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="pointsHauts" nillable="true" type="tns:pointHautSite"/>
+          <xs:element minOccurs="0" name="projet" type="tns:tableRef"/>
+          <xs:element minOccurs="0" name="referent" type="tns:sidUtilisateur"/>
+          <xs:element minOccurs="0" name="statut" type="tns:tableRef"/>
+          <xs:element minOccurs="0" name="statutReceptionSite" type="tns:enumStatutReceptionSite"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="typesIntervenantsExt" nillable="true" type="tns:sidTableRef"/>
+          <xs:element minOccurs="0" name="unite" type="tns:sidUnite"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="etape">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="affaireParent" type="tns:affaire"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="libelle" type="xs:string"/>
+          <xs:element name="numero" type="xs:int"/>
+          <xs:element minOccurs="0" name="statut" type="tns:tableRef"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="taches" nillable="true" type="tns:tache"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="tache">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateObj" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="datePrev" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateReal" type="xs:dateTime"/>
+          <xs:element name="enCours" type="xs:boolean"/>
+          <xs:element name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="intervenant" type="tns:sidUtilisateur"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="intervenantsEligibles" nillable="true" type="tns:sidUtilisateur"/>
+          <xs:element minOccurs="0" name="libelle" type="xs:string"/>
+          <xs:element name="numero" type="xs:int"/>
+          <xs:element name="numeroEtape" type="xs:int"/>
+          <xs:element name="optionnelle" type="xs:boolean"/>
+          <xs:element name="ordre" type="xs:int"/>
+          <xs:element minOccurs="0" name="profilIntervenant" type="tns:sidProfil"/>
+          <xs:element minOccurs="0" name="typeJalon" type="tns:tableRef"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sidProfil">
+    <xs:complexContent>
+      <xs:extension base="tns:coupleHabilitation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="application" type="tns:tableRef"/>
+          <xs:element minOccurs="0" name="groupeProfil" type="tns:tableRef"/>
+          <xs:element name="interne" type="xs:boolean"/>
+          <xs:element name="manageurK" type="xs:boolean"/>
+          <xs:element name="national" type="xs:boolean"/>
+          <xs:element name="sansEntite" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="coupleHabilitation">
+    <xs:complexContent>
+      <xs:extension base="tns:edfAbstractBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="libelle" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="forfaitOption">
+    <xs:complexContent>
+      <xs:extension base="tns:sidTableRef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="code" type="xs:string"/>
+          <xs:element minOccurs="0" name="codeServiceRapsodie" type="xs:string"/>
+          <xs:element minOccurs="0" name="quantite" type="xs:int"/>
+          <xs:element minOccurs="0" name="quantiteParDefaut" type="xs:int"/>
+          <xs:element minOccurs="0" name="typeForfait" type="tns:enumTypeForfait"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sidTableRef">
+    <xs:complexContent>
+      <xs:extension base="tns:tableRef">
+        <xs:sequence>
+          <xs:element name="actif" type="xs:boolean"/>
+          <xs:element name="parametrable" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="lotK">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractDivision">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="commentaire" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateDebut" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateFin" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="entite" type="tns:sidEntite"/>
+          <xs:element minOccurs="0" name="gedUrl" type="xs:string"/>
+          <xs:element minOccurs="0" name="idFonctionnel" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbPtH" type="xs:string"/>
+          <xs:element minOccurs="0" name="nbZDR" type="xs:string"/>
+          <xs:element minOccurs="0" name="objectif" type="xs:long"/>
+          <xs:element minOccurs="0" name="responsable" type="tns:sidUtilisateur"/>
+          <xs:element minOccurs="0" name="statut" type="tns:enumStatutLotK"/>
+          <xs:element minOccurs="0" name="unite" type="tns:sidUnite"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="point">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractGedBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="affaire" type="tns:affaire"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="codeInseeComCouvertes" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="communeCodeInsee" type="xs:string"/>
+          <xs:element minOccurs="0" name="coordX" type="xs:string"/>
+          <xs:element minOccurs="0" name="coordY" type="xs:string"/>
+          <xs:element minOccurs="0" name="hauteur" type="xs:long"/>
+          <xs:element minOccurs="0" name="idPoint" type="xs:long"/>
+          <xs:element minOccurs="0" name="latitudeLambert" type="xs:string"/>
+          <xs:element minOccurs="0" name="latitudeWgs84" type="xs:string"/>
+          <xs:element minOccurs="0" name="latitudeWgs84Reel" type="xs:string"/>
+          <xs:element minOccurs="0" name="longitudeLambert" type="xs:string"/>
+          <xs:element minOccurs="0" name="longitudeWgs84" type="xs:string"/>
+          <xs:element minOccurs="0" name="longitudeWgs84Reel" type="xs:string"/>
+          <xs:element minOccurs="0" name="lotKId" type="xs:long"/>
+          <xs:element minOccurs="0" name="lotKStatutId" type="xs:long"/>
+          <xs:element minOccurs="0" name="nomCommune" type="xs:string"/>
+          <xs:element minOccurs="0" name="nomLotK" type="xs:string"/>
+          <xs:element minOccurs="0" name="periodeAuPlusTard" type="xs:dateTime"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="pointsHautsSite" nillable="true" type="tns:pointHautSite"/>
+          <xs:element minOccurs="0" name="ptHaut" type="tns:pointHautSite"/>
+          <xs:element minOccurs="0" name="zdr" type="tns:zdr"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="pointHautSite">
+    <xs:complexContent>
+      <xs:extension base="tns:point">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="accessibilite" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="activites" nillable="true" type="tns:activite"/>
+          <xs:element minOccurs="0" name="adresse" type="tns:sidAdresse"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="articles" nillable="true" type="tns:article"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="autorisations" nillable="true" type="tns:sidTableRef"/>
+          <xs:element minOccurs="0" name="bailleur" type="tns:bailleur"/>
+          <xs:element minOccurs="0" ref="tns:commune"/>
+          <xs:element minOccurs="0" name="conditionsAcces" type="xs:string"/>
+          <xs:element minOccurs="0" name="confirmerEvaluation" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="conventionCadre" type="tns:conventionCadre"/>
+          <xs:element minOccurs="0" name="coutEstimeA20ans" type="xs:double"/>
+          <xs:element minOccurs="0" name="dateAuPlusTard" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateTransfertRi" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="enRenegociation" type="xs:boolean"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="equipements" nillable="true" type="tns:sidEquipement"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="etudes" nillable="true" type="tns:etude"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="exploitants" nillable="true" type="tns:tableRef"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="forfaitsOptions" nillable="true" type="tns:sidTableRef"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="forfaitsOptionsPointHaut" nillable="true" type="tns:forfaitOption"/>
+          <xs:element minOccurs="0" name="hasRepertoireGED" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="horsBordereau" type="xs:double"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="idConventionCadre" type="xs:long"/>
+          <xs:element minOccurs="0" name="idEchange" type="xs:long"/>
+          <xs:element minOccurs="0" name="idGroupePH" type="xs:long"/>
+          <xs:element minOccurs="0" name="idSiteBailleur" type="xs:string"/>
+          <xs:element minOccurs="0" name="isErrone" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="isForfaitsOptionsValides" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="lieuArchivage" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="materiels" nillable="true" type="tns:materiel"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="materielsAPrevoir" nillable="true" type="tns:materiel"/>
+          <xs:element minOccurs="0" name="nbEtages" type="xs:string"/>
+          <xs:element minOccurs="0" name="nbrPcesCouverts" type="xs:int"/>
+          <xs:element minOccurs="0" name="nomBailleur" type="xs:string"/>
+          <xs:element minOccurs="0" name="noteGlobale" type="xs:double"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="notes" nillable="true" type="tns:notation"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="notesParDefaut" nillable="true" type="tns:notation"/>
+          <xs:element minOccurs="0" name="numero" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="partiesPrenantes" nillable="true" type="tns:partiePrenante"/>
+          <xs:element minOccurs="0" name="plannificateurRadio" type="xs:string"/>
+          <xs:element minOccurs="0" name="prixHebergement" type="xs:int"/>
+          <xs:element minOccurs="0" name="status" type="tns:tableRef"/>
+          <xs:element minOccurs="0" name="statusEchangesRi" type="tns:tableRef"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="substituables" nillable="true" type="tns:pointHautSite"/>
+          <xs:element minOccurs="0" name="tauxLoyer" type="xs:double"/>
+          <xs:element minOccurs="0" name="typeBatiment" type="tns:enumTypeBatiment"/>
+          <xs:element minOccurs="0" name="unite" type="tns:sidUnite"/>
+          <xs:element minOccurs="0" name="zdrId" type="xs:long"/>
+          <xs:element minOccurs="0" name="zdrNumero" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="activite">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bailleur" type="tns:bailleur"/>
+          <xs:element minOccurs="0" name="commentaires" type="xs:string"/>
+          <xs:element minOccurs="0" name="contact" type="tns:contactBailleur"/>
+          <xs:element minOccurs="0" name="conventionCadre" type="tns:conventionCadre"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="idRI" type="xs:string"/>
+          <xs:element minOccurs="0" name="partiePrenante" type="tns:partiePrenante"/>
+          <xs:element minOccurs="0" name="partiePrenanteContact" type="tns:contact"/>
+          <xs:element minOccurs="0" name="pointHaut" type="tns:pointHautSite"/>
+          <xs:element minOccurs="0" name="sousTypeActivite" type="tns:enumSousTypeActivite"/>
+          <xs:element minOccurs="0" name="statutsEchangesRI" type="tns:enumStatutEchangeRI"/>
+          <xs:element minOccurs="0" name="typeActivite" type="tns:enumTypeActivite"/>
+          <xs:element minOccurs="0" name="typePartiePrenante" type="tns:sidTableRef"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="bailleur">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractGedBean">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="activites" nillable="true" type="tns:activite"/>
+          <xs:element minOccurs="0" name="adresse" type="tns:sidAdresse"/>
+          <xs:element minOccurs="0" name="commentaire" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="contacts" nillable="true" type="tns:contactBailleur"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="conventionsCadres" nillable="true" type="tns:conventionCadre"/>
+          <xs:element minOccurs="0" name="entiteK" type="tns:sidEntite"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="idAToutPrisca" type="xs:string"/>
+          <xs:element minOccurs="0" name="idEchangeRi" type="xs:long"/>
+          <xs:element minOccurs="0" name="idRi" type="xs:string"/>
+          <xs:element name="nbCcInitees" type="xs:int"/>
+          <xs:element name="nbCcSignees" type="xs:int"/>
+          <xs:element minOccurs="0" name="raisonSociale" type="xs:string"/>
+          <xs:element minOccurs="0" name="statutBailleur" type="tns:tableRef"/>
+          <xs:element minOccurs="0" name="statutEchangeRi" type="tns:enumStatutEchangeRI"/>
+          <xs:element minOccurs="0" name="typeBailleur" type="tns:tableRef"/>
+          <xs:element minOccurs="0" name="typeRegroupement" type="xs:string"/>
+          <xs:element minOccurs="0" name="typeSociete" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sidAdresse">
+    <xs:complexContent>
+      <xs:extension base="tns:adresse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codeInsee" type="xs:string"/>
+          <xs:element minOccurs="0" ref="tns:commune"/>
+          <xs:element minOccurs="0" name="communeId" type="xs:long"/>
+          <xs:element minOccurs="0" name="complementAdresse" type="xs:string"/>
+          <xs:element minOccurs="0" name="numero" type="xs:string"/>
+          <xs:element minOccurs="0" name="voie" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="adresse">
+    <xs:complexContent>
+      <xs:extension base="tns:edfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="adresse" type="xs:string"/>
+          <xs:element minOccurs="0" name="codePostal" type="xs:string"/>
+          <xs:element minOccurs="0" name="commentaires" type="xs:string"/>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="entite" type="tns:entite"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="interlocuteur" type="xs:string"/>
+          <xs:element minOccurs="0" name="telephone" type="xs:string"/>
+          <xs:element minOccurs="0" name="typeAutres" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="typeEnlevement" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="typeLivraison" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="typeSiege" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ville" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="edfAbstractDatabaseBean">
+    <xs:complexContent>
+      <xs:extension base="tns:edfAbstractBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateCreation" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateModification" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="nniCreation" type="xs:string"/>
+          <xs:element minOccurs="0" name="nniModification" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="commune">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="agence" type="tns:agence"/>
+          <xs:element minOccurs="0" name="allSecteursAssignsToZdd" type="xs:int"/>
+          <xs:element minOccurs="0" name="chargeRemplt" type="xs:long"/>
+          <xs:element minOccurs="0" name="codeInsee" type="xs:string"/>
+          <xs:element minOccurs="0" name="codePostal" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="coordonnees" nillable="true" type="tns:coordonneesCommune"/>
+          <xs:element minOccurs="0" name="dateCloture" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateDebut" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateFin" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="deploiementCommune" type="tns:deploiementCommune"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="gfis" nillable="true" type="tns:gfi"/>
+          <xs:element minOccurs="0" name="grandeAgglomeration" type="xs:boolean"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="interventions" nillable="true" type="tns:intervention"/>
+          <xs:element minOccurs="0" name="isValiderPrepaDep" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="lotC" type="tns:lotC"/>
+          <xs:element minOccurs="0" name="nbBailleurs" type="xs:int"/>
+          <xs:element minOccurs="0" name="nbPointsHauts" type="xs:int"/>
+          <xs:element minOccurs="0" name="nbPointsHautsOptimaux" type="xs:int"/>
+          <xs:element minOccurs="0" name="nbrePCE" type="xs:int"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="pointHauts" nillable="true" type="tns:pointHautSite"/>
+          <xs:element minOccurs="0" name="prepaDepValidee" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="territoire" type="tns:territoire"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="zdds" nillable="true" type="tns:zdd"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="agence">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codeAgence" type="xs:string"/>
+          <xs:element minOccurs="0" name="comNom" type="xs:string"/>
+          <xs:element minOccurs="0" name="idCommune" type="xs:long"/>
+          <xs:element minOccurs="0" name="libelle" type="xs:string"/>
+          <xs:element minOccurs="0" name="unite" type="tns:sidUnite"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="coordonneesCommune">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codeInsee" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="projection" type="xs:string"/>
+          <xs:element minOccurs="0" name="wkt" type="xs:string"/>
+          <xs:element minOccurs="0" name="zoomMax" type="xs:long"/>
+          <xs:element minOccurs="0" name="zoomMin" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="deploiementCommune">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="calculerDatePlusTard" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="codeInsee" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateDebut" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateDebutLot" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateFin" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateFinLot" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateIncompatible" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="lotCId" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbPce" type="xs:long"/>
+          <xs:element minOccurs="0" name="nomCommune" type="xs:string"/>
+          <xs:element minOccurs="0" name="tempsDeploiement" type="xs:long"/>
+          <xs:element minOccurs="0" name="tempsDeploiementSurdefini" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="gfi">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chargeRemplt" type="xs:long"/>
+          <xs:element minOccurs="0" name="firstOptimalMonth" type="xs:int"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="secondOptimalMonth" type="xs:int"/>
+          <xs:element minOccurs="0" name="valeur" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="intervention">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="auditee" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="avecPreference" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="avecRendezVous" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="calculerDatePlusTard" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="communeCodePostal" type="xs:string"/>
+          <xs:element minOccurs="0" name="communeNom" type="xs:string"/>
+          <xs:element minOccurs="0" name="compteurCoordX" type="xs:string"/>
+          <xs:element minOccurs="0" name="compteurCoordY" type="xs:string"/>
+          <xs:element minOccurs="0" name="compteurLatitude" type="xs:double"/>
+          <xs:element minOccurs="0" name="compteurLongitude" type="xs:double"/>
+          <xs:element minOccurs="0" name="compteurReperageRobinet" type="xs:string"/>
+          <xs:element minOccurs="0" name="compteurReplanification" type="xs:long"/>
+          <xs:element minOccurs="0" name="compteurTypeBranchement" type="tns:enumTypeBranchement"/>
+          <xs:element minOccurs="0" name="creneauSommePoidsInterv" type="xs:int"/>
+          <xs:element minOccurs="0" name="creneauSommePoidsIntervAvecRdv" type="xs:int"/>
+          <xs:element minOccurs="0" name="creneauxId" type="xs:long"/>
+          <xs:element minOccurs="0" name="dateDebut" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="datePlanification" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateRealisation" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="entiteNom" type="xs:string"/>
+          <xs:element minOccurs="0" name="entiteTelephone" type="xs:string"/>
+          <xs:element minOccurs="0" name="entitesId" type="xs:long"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="indexMax" type="xs:long"/>
+          <xs:element minOccurs="0" name="indexMin" type="xs:long"/>
+          <xs:element minOccurs="0" name="isOk" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="lotCDateDebut" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="lotCDateFin" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="lotCIdFonctionnel" type="xs:long"/>
+          <xs:element minOccurs="0" name="lotCIdUnite" type="xs:string"/>
+          <xs:element minOccurs="0" name="lotCLibelle" type="xs:string"/>
+          <xs:element minOccurs="0" name="lotCNomResponsable" type="xs:string"/>
+          <xs:element minOccurs="0" name="lotCStatutCQ" type="tns:enumStatutLotControleQualite"/>
+          <xs:element minOccurs="0" name="lotCTelephoneFixeResponsable" type="xs:string"/>
+          <xs:element minOccurs="0" name="lotId" type="xs:long"/>
+          <xs:element minOccurs="0" name="lotcPrecisionContactUrgence" type="xs:string"/>
+          <xs:element minOccurs="0" name="lotcTelephoneContactUrgence" type="xs:string"/>
+          <xs:element minOccurs="0" name="motifKo" type="xs:string"/>
+          <xs:element minOccurs="0" name="motifKoInstruction" type="xs:string"/>
+          <xs:element minOccurs="0" name="motifsInterventionscKoId" type="xs:long"/>
+          <xs:element minOccurs="0" name="nomTechnicien" type="xs:string"/>
+          <xs:element minOccurs="0" name="nomTechnicienTournee" type="xs:string"/>
+          <xs:element minOccurs="0" name="OCIEffectue" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ordre" type="xs:int"/>
+          <xs:element minOccurs="0" name="pceChargeRemplacementCompteur" type="xs:int"/>
+          <xs:element minOccurs="0" name="pceClientPreference" type="xs:string"/>
+          <xs:element minOccurs="0" name="pceContactCliNomAbonne" type="xs:string"/>
+          <xs:element minOccurs="0" name="pceContactCliPrenomAbonne" type="xs:string"/>
+          <xs:element minOccurs="0" name="pceId" type="xs:string"/>
+          <xs:element minOccurs="0" name="pceNomRue" type="xs:string"/>
+          <xs:element minOccurs="0" name="pceNumeroRue" type="xs:string"/>
+          <xs:element minOccurs="0" name="pceOci" type="xs:string"/>
+          <xs:element minOccurs="0" name="pceReference" type="xs:string"/>
+          <xs:element minOccurs="0" name="pceRendezVousNecessaire" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="pceStatut" type="tns:enumStatutPce"/>
+          <xs:element minOccurs="0" name="poidsIntervention" type="xs:int"/>
+          <xs:element minOccurs="0" name="prenomTechnicien" type="xs:string"/>
+          <xs:element minOccurs="0" name="prenomTechnicienTournee" type="xs:string"/>
+          <xs:element minOccurs="0" name="recreerIntervention" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="rendezVousConfirmer" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="rendezVousSouhaite" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="statutIntervention" type="tns:enumStatutInterventionC"/>
+          <xs:element minOccurs="0" name="technicienId" type="xs:long"/>
+          <xs:element minOccurs="0" name="technicienUtilisateurId" type="xs:long"/>
+          <xs:element minOccurs="0" name="tourneeId" type="xs:long"/>
+          <xs:element minOccurs="0" name="tourneeJour" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="typeCreneaux" type="tns:enumCreneaux"/>
+          <xs:element minOccurs="0" name="typesInterventionscOrigine" type="tns:enumTypeInterventionC"/>
+          <xs:element minOccurs="0" name="typesInterventionscRealise" type="tns:enumTypeInterventionC"/>
+          <xs:element minOccurs="0" name="uniteId" type="xs:string"/>
+          <xs:element minOccurs="0" name="zddDateDeploiement" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="zddId" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="lotC">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractDivision">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="commentaire" type="xs:string"/>
+          <xs:element minOccurs="0" name="contactUrgenceNom" type="xs:string"/>
+          <xs:element minOccurs="0" name="contactUrgenceTel" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateDebut" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateFin" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="entite" type="tns:sidEntite"/>
+          <xs:element minOccurs="0" name="gedUrl" type="xs:string"/>
+          <xs:element minOccurs="0" name="idFonctionnel" type="xs:long"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="lotCMois" nillable="true" type="tns:lotCMois"/>
+          <xs:element minOccurs="0" name="manager" type="tns:sidUtilisateur"/>
+          <xs:element minOccurs="0" name="managerId" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="managersEligibles" nillable="true" type="tns:sidUtilisateur"/>
+          <xs:element minOccurs="0" name="nbPce" type="xs:long"/>
+          <xs:element minOccurs="0" name="nomLot" type="xs:string"/>
+          <xs:element minOccurs="0" name="nombreDePceTotalFinal" type="xs:long"/>
+          <xs:element minOccurs="0" name="nombreDePceTotalInitial" type="xs:long"/>
+          <xs:element minOccurs="0" name="objectif" type="xs:long"/>
+          <xs:element minOccurs="0" name="responsable" type="tns:sidUtilisateur"/>
+          <xs:element minOccurs="0" name="statut" type="tns:enumStatutLotC"/>
+          <xs:element minOccurs="0" name="synthesePce" type="tns:synthesePce"/>
+          <xs:element minOccurs="0" name="txMaterielCommande" type="xs:int"/>
+          <xs:element minOccurs="0" name="typeLotC" type="tns:tableRef"/>
+          <xs:element minOccurs="0" name="unite" type="tns:sidUnite"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="lotCMois">
+    <xs:complexContent>
+      <xs:extension base="tns:edfAbstractBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idMoisDePose" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbPce" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="synthesePce">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="nbCptAccessible" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbCptAvecReperage" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbCptInaccessible" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbModuleAccessible" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbModuleAvecReperage" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbModuleInaccessible" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbTotalPce" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="territoire">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="communes" nillable="true" type="tns:commune"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="etudes" nillable="true" type="tns:etude"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="majStatut" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="metaData" type="tns:metaDataTerritoire"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="phEligible" type="xs:int"/>
+          <xs:element minOccurs="0" name="statut" type="tns:tableRef"/>
+          <xs:element minOccurs="0" name="unite" type="tns:sidUnite"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="etude">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="affaireId" type="xs:long"/>
+          <xs:element minOccurs="0" name="dateDemande" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateExport" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateImport" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateRetour" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="exporteur" type="xs:string"/>
+          <xs:element minOccurs="0" name="exporteurNom" type="xs:string"/>
+          <xs:element minOccurs="0" name="exporteurPrenom" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="groupePH" nillable="true" type="tns:groupePointHaut"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="idFonctionnelZdr" type="xs:string"/>
+          <xs:element minOccurs="0" name="importeurName" type="xs:string"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="planificateurRadio" type="tns:sidUtilisateur"/>
+          <xs:element minOccurs="0" name="territoire" type="tns:territoire"/>
+          <xs:element minOccurs="0" name="typeEtude" type="tns:tableRef"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="groupePointHaut">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="communes" nillable="true" type="tns:commune"/>
+          <xs:element minOccurs="0" name="etatSelection" type="tns:enumEtatSelectionRetenue"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="libelle" type="xs:string"/>
+          <xs:element minOccurs="0" name="pointHautSelectionne" type="tns:pointHautSite"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="pointsHautsSites" nillable="true" type="tns:pointHautSite"/>
+          <xs:element name="reseauMinimal" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="territoire" type="tns:territoire"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="metaDataTerritoire">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractAsynchroneBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="nbCommunes" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbGrPh" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbGrPhResMin" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbPceCouvertPHSelecTerritoire" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbPceTerritoireStatut" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbPceTerritoireTotal" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbPh" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbPhOptimaux" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbPhRetenus" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbZdr" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="abstractAsynchroneBean">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="statut" type="tns:enumStatutCalculAsync"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="zdd">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chargeAffectee" type="xs:long"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="communes" nillable="true" type="tns:commune"/>
+          <xs:element minOccurs="0" name="dateDeploiement" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="lotC" type="tns:lotC"/>
+          <xs:element minOccurs="0" name="nbCommune" type="xs:long"/>
+          <xs:element minOccurs="0" name="nbPce" type="xs:long"/>
+          <xs:element minOccurs="0" name="objectif" type="xs:long"/>
+          <xs:element minOccurs="0" name="sommeTransfert" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="entite">
+    <xs:complexContent>
+      <xs:extension base="tns:edfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="adresse" type="tns:adresse"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="libelle" type="xs:string"/>
+          <xs:element minOccurs="0" name="nature" type="xs:string"/>
+          <xs:element minOccurs="0" name="nbLots" type="xs:int"/>
+          <xs:element minOccurs="0" name="observation" type="xs:string"/>
+          <xs:element minOccurs="0" name="outils" type="xs:string"/>
+          <xs:element minOccurs="0" name="type" type="xs:string"/>
+          <xs:element minOccurs="0" name="uniteId" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="contactBailleur">
+    <xs:complexContent>
+      <xs:extension base="tns:contact">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bailleurIdRi" type="xs:string"/>
+          <xs:element minOccurs="0" name="idRi" type="xs:string"/>
+          <xs:element minOccurs="0" name="statutEchangeRi" type="tns:tableRef"/>
+          <xs:element minOccurs="0" name="telephoneFixe" type="xs:string"/>
+          <xs:element minOccurs="0" name="telephonePortable" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="conventionCadre">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractGedBean">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="activites" nillable="true" type="tns:activite"/>
+          <xs:element minOccurs="0" name="bailleurId" type="xs:long"/>
+          <xs:element minOccurs="0" name="bailleurIdRi" type="xs:string"/>
+          <xs:element minOccurs="0" name="createur" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateSignature" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateValidation" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateValidationRi" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="jalons" nillable="true" type="tns:jalonConventionCadre"/>
+          <xs:element minOccurs="0" name="libelle" type="xs:string"/>
+          <xs:element minOccurs="0" name="loyerMoyenAnnuel" type="xs:int"/>
+          <xs:element minOccurs="0" name="statutEchangeRiId" type="xs:long"/>
+          <xs:element minOccurs="0" name="tauxActualisationLoyer" type="xs:double"/>
+          <xs:element minOccurs="0" name="typeProbabiliteSignature" type="tns:tableRef"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="jalonConventionCadre">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element name="ccId" type="xs:long"/>
+          <xs:element minOccurs="0" name="datePrevisionnel" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateRealisation" type="xs:dateTime"/>
+          <xs:element name="idTypeJalonCC" type="xs:long"/>
+          <xs:element name="numeroAvenant" type="xs:long"/>
+          <xs:element minOccurs="0" name="oldDateRealisation" type="xs:dateTime"/>
+          <xs:element name="ordreMetier" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="partiePrenante">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="contacts" nillable="true" type="tns:contact"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="isActif" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="isParametrable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="nomPartiePrenante" type="xs:string"/>
+          <xs:element minOccurs="0" name="typePartiePrenante" type="tns:sidTableRef"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="article">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractBean">
+        <xs:sequence>
+          <xs:element name="actif" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="actionDemandee" type="tns:enumMaterielActionDemandee"/>
+          <xs:element minOccurs="0" name="code" type="xs:string"/>
+          <xs:element minOccurs="0" name="codeRapsodie" type="xs:string"/>
+          <xs:element minOccurs="0" name="codeSias" type="xs:string"/>
+          <xs:element minOccurs="0" name="consigne" type="tns:enumConsigneMateriel"/>
+          <xs:element minOccurs="0" name="famille" type="tns:famille"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="idInterventionEquipement" type="xs:long"/>
+          <xs:element minOccurs="0" name="libelle" type="xs:string"/>
+          <xs:element minOccurs="0" name="localisation" type="tns:enumLocalisationInterneArticles"/>
+          <xs:element minOccurs="0" name="nombreParDefaut" type="xs:long"/>
+          <xs:element minOccurs="0" name="nombreParLot" type="xs:long"/>
+          <xs:element minOccurs="0" name="numeroOrdre" type="xs:long"/>
+          <xs:element name="parametrable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="quantite" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="famille">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractBean">
+        <xs:sequence>
+          <xs:element name="actif" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="libelle" type="xs:string"/>
+          <xs:element minOccurs="0" name="nombreMax" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sidEquipement">
+    <xs:complexContent>
+      <xs:extension base="tns:sidTableRef">
+        <xs:sequence>
+          <xs:element name="quantite" type="xs:float"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="materiel">
+    <xs:complexContent>
+      <xs:extension base="tns:article">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="actionRealise" type="tns:enumActionMateriel"/>
+          <xs:element minOccurs="0" name="codeBarre" type="xs:string"/>
+          <xs:element minOccurs="0" name="contenantId" type="xs:long"/>
+          <xs:element minOccurs="0" name="criKDePoseId" type="xs:long"/>
+          <xs:element minOccurs="0" name="criKPoseId" type="xs:long"/>
+          <xs:element minOccurs="0" name="dateChangementStatut" type="xs:dateTime"/>
+          <xs:element name="defectueux" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="demandeApprovisionnementId" type="xs:long"/>
+          <xs:element minOccurs="0" name="externeCoffret" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="idArticle" type="xs:long"/>
+          <xs:element minOccurs="0" name="idMateriel" type="xs:long"/>
+          <xs:element minOccurs="0" name="imsik" type="xs:string"/>
+          <xs:element minOccurs="0" name="latitudeK" type="xs:string"/>
+          <xs:element minOccurs="0" name="livraisonId" type="xs:long"/>
+          <xs:element minOccurs="0" name="localisationLieuxLivraisonId" type="xs:long"/>
+          <xs:element minOccurs="0" name="localisationPceId" type="xs:string"/>
+          <xs:element minOccurs="0" name="localisationPointHautId" type="xs:long"/>
+          <xs:element minOccurs="0" name="localisationTechnicienId" type="xs:long"/>
+          <xs:element minOccurs="0" name="longitudeK" type="xs:string"/>
+          <xs:element minOccurs="0" name="numPortLan" type="xs:int"/>
+          <xs:element minOccurs="0" name="statut" type="tns:enumStatutMateriel"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="notation">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractDatabaseBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="commentaire" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element name="note" type="xs:int"/>
+          <xs:element minOccurs="0" name="pointHautId" type="xs:long"/>
+          <xs:element minOccurs="0" name="typeNote" type="tns:tableRef"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="zdr">
+    <xs:complexContent>
+      <xs:extension base="tns:point">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="commentaireDeploiement" type="xs:string"/>
+          <xs:element minOccurs="0" name="commentairePlanif" type="xs:string"/>
+          <xs:element minOccurs="0" ref="tns:commune"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="communesCouvertes" nillable="true" type="tns:commune"/>
+          <xs:element minOccurs="0" name="createur" type="tns:sidUtilisateur"/>
+          <xs:element minOccurs="0" name="dateAuPlusTard" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="etudeId" type="xs:long"/>
+          <xs:element minOccurs="0" name="etudePlanif" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="idFonctionnel" type="xs:string"/>
+          <xs:element minOccurs="0" name="kmlUrl" type="xs:string"/>
+          <xs:element minOccurs="0" name="lieuArchivage" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="pointHautSites" nillable="true" type="tns:pointHautSite"/>
+          <xs:element minOccurs="0" name="pointHautTheorique" type="tns:pointHautSite"/>
+          <xs:element minOccurs="0" name="rayon" type="xs:double"/>
+          <xs:element minOccurs="0" name="status" type="tns:tableRef"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="bail">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractGedBean">
+        <xs:sequence>
+          <xs:element name="actif" type="xs:boolean"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="bailleurs" nillable="true" type="tns:bailleur"/>
+          <xs:element minOccurs="0" name="commentaireResiliation" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateEnregistrementRi" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateResiliation" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateSignatureBail" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateTransfertRi" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateValidation" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="debutNegociation" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="idRI" type="xs:string"/>
+          <xs:element minOccurs="0" name="negociateurBail" type="tns:sidUtilisateur"/>
+          <xs:element minOccurs="0" name="numero" type="xs:string"/>
+          <xs:element minOccurs="0" name="pointHautSite" type="tns:pointHautSite"/>
+          <xs:element name="principal" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="statutEchangeRi" type="tns:tableRef"/>
+          <xs:element minOccurs="0" name="typeBail" type="tns:tableRef"/>
+          <xs:element name="valideRi" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="bailleurRiCis">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractGedBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="adresse1" type="xs:string"/>
+          <xs:element minOccurs="0" name="adresse2" type="xs:string"/>
+          <xs:element minOccurs="0" name="codeInsee" type="xs:long"/>
+          <xs:element minOccurs="0" name="codePostal" type="xs:long"/>
+          <xs:element minOccurs="0" name="commune" type="xs:string"/>
+          <xs:element minOccurs="0" name="conventionCadreId" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateValidationBail" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dateValidationCc" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="idBail" type="xs:string"/>
+          <xs:element minOccurs="0" name="idEchangeRi" type="xs:long"/>
+          <xs:element minOccurs="0" name="idPh" type="xs:string"/>
+          <xs:element minOccurs="0" name="idRi" type="xs:string"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="typeBail" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sidHabilitation">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="creationDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="creationUtilisateur" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="majDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="majUtilisateur" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="perimetres" nillable="true" type="tns:abstractDivision"/>
+          <xs:element minOccurs="0" name="profil" type="tns:sidProfil"/>
+          <xs:element name="utilisateurID" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType final="extension restriction" name="porteCles">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractBean">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="listeCles" nillable="true" type="tns:cle"/>
+          <xs:element minOccurs="0" name="typePorteCles" type="tns:enumTypePorteCles"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType final="extension restriction" name="cle">
+    <xs:complexContent>
+      <xs:extension base="tns:grdfAbstractBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="droit" type="tns:enumTypeAcces"/>
+          <xs:element minOccurs="0" name="identification" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="updateStatutAffaireResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getAffaireByTache">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tacheId" type="xs:long"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffaireByTacheResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="rechercheAffaireByNumero">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="numeroAffaire" type="xs:string"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="rechercheAffaireByNumeroResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffairesByZdr">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="zdrID" type="xs:long"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffairesByZdrResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deselectionnerPHSite">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="affaire" type="tns:affaire"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deselectionnerPHSiteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffaireById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="affaireId" type="xs:long"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffaireByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffaireParLotKEtManager">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lotkId" type="xs:long"/>
+      <xs:element minOccurs="0" name="managerId" type="xs:long"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffaireParLotKEtManagerResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="delotirAffairesByLotKId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lotKId" type="xs:long"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="delotirAffairesByLotKIdResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="countNbAffairesByLotId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lotKId" type="xs:long"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="countNbAffairesByLotIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateStatutAndEntiteByLot">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="statutAffaire" type="tns:enumStatutAffaire"/>
+      <xs:element minOccurs="0" name="entiteId" type="xs:long"/>
+      <xs:element minOccurs="0" name="lotKId" type="xs:long"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateStatutAndEntiteByLotResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getAffairesEnCoursByUserPaginate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="tns:enumProfil"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:long"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg4" type="tns:enumOracleBooleen"/>
+      <xs:element name="arg5" type="xs:int"/>
+      <xs:element name="arg6" type="xs:int"/>
+      <xs:element minOccurs="0" name="arg7" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffairesEnCoursByUserPaginateResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="countAffairesEnCoursByUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usrNni" type="xs:string"/>
+      <xs:element minOccurs="0" name="usrProfil" type="tns:enumProfil"/>
+      <xs:element minOccurs="0" name="usrEntiteId" type="xs:long"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codesUnites" type="xs:string"/>
+      <xs:element minOccurs="0" name="userAdmin" type="tns:enumOracleBooleen"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="countAffairesEnCoursByUserResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="creerAffaire">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pointId" type="xs:long"/>
+      <xs:element minOccurs="0" name="nature" type="tns:enumNatureAffaire"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="creerAffaireResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="lotirAffaires">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idLotK" type="xs:long"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="idPoints" type="xs:long"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="lotirAffairesResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getAffairesEnCoursByUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usrNni" type="xs:string"/>
+      <xs:element minOccurs="0" name="usrProfil" type="tns:enumProfil"/>
+      <xs:element minOccurs="0" name="usrEntiteId" type="xs:long"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codesUnites" type="xs:string"/>
+      <xs:element minOccurs="0" name="userAdmin" type="tns:enumOracleBooleen"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffairesEnCoursByUserResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="delotirAffairesByPoints">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="idPoints" type="xs:long"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="delotirAffairesByPointsResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getAffairesByPointHautAndStatuts">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="phID" type="xs:long"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="statutsAffaires" type="tns:enumStatutAffaire"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffairesByPointHautAndStatutsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffairesByIds">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="affaireIds" type="xs:long"/>
+      <xs:element minOccurs="0" name="withJalonsStandard" type="tns:enumOracleBooleen"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffairesByIdsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="creerAffaireEtPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="point" type="tns:point"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="creerAffaireEtPointResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="abandonnerAffaire">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="affaire" type="tns:affaire"/>
+      <xs:element minOccurs="0" name="commentaire" type="xs:string"/>
+      <xs:element minOccurs="0" name="nniUtilisateur" type="xs:string"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="abandonnerAffaireResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffairesRealisees">
+    <xs:sequence>
+      <xs:element name="isReferent" type="xs:boolean"/>
+      <xs:element name="isChargeAff" type="xs:boolean"/>
+      <xs:element name="isAdmin" type="xs:boolean"/>
+      <xs:element name="isManager" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codesUnites" type="xs:string"/>
+      <xs:element minOccurs="0" name="usrEntite" type="xs:long"/>
+      <xs:element minOccurs="0" name="usrNni" type="xs:string"/>
+      <xs:element minOccurs="0" name="statutAffaire" type="tns:enumStatutAffaire"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffairesRealiseesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffairesByPointHaut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="phID" type="xs:long"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffairesByPointHautResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEtudesCByZdrId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="zdrId" type="xs:long"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEtudesCByZdrIdResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:etude"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffairesSuperviseesByUser">
+    <xs:sequence>
+      <xs:element name="isManager" type="xs:boolean"/>
+      <xs:element name="isAdmin" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="usrEntiteId" type="xs:long"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codesUnites" type="xs:string"/>
+      <xs:element minOccurs="0" name="usrNni" type="xs:string"/>
+      <xs:element minOccurs="0" name="usrProfil" type="tns:enumProfil"/>
+      <xs:element minOccurs="0" name="contexte" type="tns:contexte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAffairesSuperviseesByUserResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:affaire"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="enumStatutAffaire">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EN_ATTENTE_DEPLOIEMENT"/>
+      <xs:enumeration value="INITIEE"/>
+      <xs:enumeration value="AFFECTEE"/>
+      <xs:enumeration value="EN_COURS"/>
+      <xs:enumeration value="TRAITEE"/>
+      <xs:enumeration value="ABANDONNEE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumSIDApplication">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="APP_SSD"/>
+      <xs:enumeration value="APP_SDP"/>
+      <xs:enumeration value="APP_SDC"/>
+      <xs:enumeration value="APP_CIS"/>
+      <xs:enumeration value="APP_RI"/>
+      <xs:enumeration value="APP_SRC"/>
+      <xs:enumeration value="APP_MOBK"/>
+      <xs:enumeration value="APP_MOBC"/>
+      <xs:enumeration value="APP_LGK"/>
+      <xs:enumeration value="APP_AMG"/>
+      <xs:enumeration value="APP_SDM"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumStatutEntite">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIF"/>
+      <xs:enumeration value="INACTIF"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumTypeForfait">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OBTENTION_SITE"/>
+      <xs:enumeration value="DEPLOIEMENT"/>
+      <xs:enumeration value="DEMONTAGE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumStatutLotK">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EN_CREATION"/>
+      <xs:enumeration value="AFFECTE"/>
+      <xs:enumeration value="EN_COURS"/>
+      <xs:enumeration value="TERMINE"/>
+      <xs:enumeration value="ABANDONNE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumTypeBranchement">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AUCUN_BRANCHEMENT"/>
+      <xs:enumeration value="PARTICULIER_INDIVIDUEL_PRODUCTIF"/>
+      <xs:enumeration value="PARTICULIER_INDIVIDUEL_IMPRODUCTIF"/>
+      <xs:enumeration value="PARTICULIER_COLLECTIF_PRODUCTIF"/>
+      <xs:enumeration value="PARTICULIER_COLLECTIF_IMPRODUCTIF"/>
+      <xs:enumeration value="FORFAIT_CUISINE"/>
+      <xs:enumeration value="VENTE_GAZ_REPARTIE"/>
+      <xs:enumeration value="AUTRE_BRANCHEMENT_3"/>
+      <xs:enumeration value="AUTRE_BRANCHEMENT_4"/>
+      <xs:enumeration value="AUTRE_BRANCHEMENT_9"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumStatutLotControleQualite">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EN_COURS"/>
+      <xs:enumeration value="REJETE"/>
+      <xs:enumeration value="VALIDE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumStatutPce">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A_DEPLOYER"/>
+      <xs:enumeration value="HORS_PERIMETRE"/>
+      <xs:enumeration value="DEPLOYE"/>
+      <xs:enumeration value="ABANDONNE"/>
+      <xs:enumeration value="EQUIPE"/>
+      <xs:enumeration value="TELERELEVE"/>
+      <xs:enumeration value="INITIALISE"/>
+      <xs:enumeration value="RECONCILIE"/>
+      <xs:enumeration value="ASRAP"/>
+      <xs:enumeration value="ECHEC_TELERELEVE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumStatutInterventionC">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NE_PAS_DEPLOYER"/>
+      <xs:enumeration value="ENTRANTE"/>
+      <xs:enumeration value="EN_ATTENTE_DEPLOIEMENT"/>
+      <xs:enumeration value="A_PLANIFIER"/>
+      <xs:enumeration value="PLANIFIEE"/>
+      <xs:enumeration value="AFFECTEE"/>
+      <xs:enumeration value="REALISEE"/>
+      <xs:enumeration value="NON_REALISEE"/>
+      <xs:enumeration value="ABANDONNEE"/>
+      <xs:enumeration value="CR_A_TRAITER"/>
+      <xs:enumeration value="EN_SUSPENS"/>
+      <xs:enumeration value="DEMANDE_DE_SORTIE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumCreneaux">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CRENNEAU_8_10"/>
+      <xs:enumeration value="CRENNEAU_10_12"/>
+      <xs:enumeration value="CRENNEAU_12_14"/>
+      <xs:enumeration value="CRENNEAU_14_16"/>
+      <xs:enumeration value="CRENNEAU_16_18"/>
+      <xs:enumeration value="CRENNEAU_18_20"/>
+      <xs:enumeration value="CRENNEAU_20_22"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumTypeInterventionC">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PCO"/>
+      <xs:enumeration value="PMO"/>
+      <xs:enumeration value="RMG"/>
+      <xs:enumeration value="CQCO"/>
+      <xs:enumeration value="CQMO"/>
+      <xs:enumeration value="AUDCO"/>
+      <xs:enumeration value="AUDMO"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumStatutLotC">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EN_CREATION"/>
+      <xs:enumeration value="VALIDE"/>
+      <xs:enumeration value="AFFECTE"/>
+      <xs:enumeration value="TERMINE"/>
+      <xs:enumeration value="ABANDONNE"/>
+      <xs:enumeration value="A_SUPPRIME"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumEtatSelectionRetenue">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AUCUNE_SELECTION"/>
+      <xs:enumeration value="AMELIORATION_POSSIBLE"/>
+      <xs:enumeration value="MEILLEURE_NOTE"/>
+      <xs:enumeration value="SELECTION_VEROUILLEE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumStatutCalculAsync">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EN_COURS"/>
+      <xs:enumeration value="EN_ERREUR"/>
+      <xs:enumeration value="TERMINE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumStatutEchangeRI">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NE_PAS_TRANSFERER"/>
+      <xs:enumeration value="A_TRANSFERER"/>
+      <xs:enumeration value="TRANSFERT_KO"/>
+      <xs:enumeration value="TRANSFERT_OK"/>
+      <xs:enumeration value="A_SUPPRIMER"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumSousTypeActivite">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EMAIL"/>
+      <xs:enumeration value="COURRIER_RECU"/>
+      <xs:enumeration value="COURRIER_A_ENVOYER"/>
+      <xs:enumeration value="APPEL_TELEPHONIQUE"/>
+      <xs:enumeration value="RDV"/>
+      <xs:enumeration value="REUNION"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumTypeActivite">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INFORMATION"/>
+      <xs:enumeration value="DEMANDE"/>
+      <xs:enumeration value="ALERTE"/>
+      <xs:enumeration value="CONTRACTUEL"/>
+      <xs:enumeration value="PAIEMENT"/>
+      <xs:enumeration value="TECHNIQUE"/>
+      <xs:enumeration value="DESAGREMENT"/>
+      <xs:enumeration value="DEMANDE_DE_DEMONTAGE"/>
+      <xs:enumeration value="DEMANDE_DE_RENEGOCIATION"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumMaterielActionDemandee">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INITIALISATION"/>
+      <xs:enumeration value="REMPLACEMENT"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumConsigneMateriel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A_INSTALLER"/>
+      <xs:enumeration value="A_DEMONTER"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumLocalisationInterneArticles">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EXTERNE"/>
+      <xs:enumeration value="K"/>
+      <xs:enumeration value="INTERNE"/>
+      <xs:enumeration value="C"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumActionMateriel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INSTALLE"/>
+      <xs:enumeration value="DEMONTE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumStatutMateriel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ATTENDU_LIVRAISON"/>
+      <xs:enumeration value="EN_MAGASIN"/>
+      <xs:enumeration value="PRELEVE"/>
+      <xs:enumeration value="POSE"/>
+      <xs:enumeration value="RETOURNE"/>
+      <xs:enumeration value="DEMARQUE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumTypeBatiment">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CHATEAU_DEAU"/>
+      <xs:enumeration value="PYLONE"/>
+      <xs:enumeration value="IMMEUBLE_TOIT_V"/>
+      <xs:enumeration value="EGLISE"/>
+      <xs:enumeration value="IMMEUBLE_TOIT_TERRASE"/>
+      <xs:enumeration value="COMPLEXE_SPORTIF"/>
+      <xs:enumeration value="BATIMENT_CLASSE"/>
+      <xs:enumeration value="DIVERS"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumStatutReceptionSite">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AUCUN_STATUT"/>
+      <xs:enumeration value="RECEPTION_OK"/>
+      <xs:enumeration value="OK_AVEC_RESERVES"/>
+      <xs:enumeration value="RECEPTION_KO"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumTypeAcces">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AUCUN_ACCES"/>
+      <xs:enumeration value="LECTURE"/>
+      <xs:enumeration value="ECRITURE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumTypePorteCles">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ECRAN"/>
+      <xs:enumeration value="MENU"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumProfil">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADMINISTRATEUR_FONCTIONNEL"/>
+      <xs:enumeration value="CELLULE_DE_SUPERVISION"/>
+      <xs:enumeration value="PLANIFICATEUR_CHAINE_COMMUNICANTE"/>
+      <xs:enumeration value="CONSEILLER_TERRITOIRE"/>
+      <xs:enumeration value="DEVELOPPEUR_NATIONAL"/>
+      <xs:enumeration value="REFERENT_CONCENTRATEUR"/>
+      <xs:enumeration value="CHARGE_AFFAIRE"/>
+      <xs:enumeration value="PLANIFICATEUR_RADIO"/>
+      <xs:enumeration value="MANAGER_CONCENTRATEUR"/>
+      <xs:enumeration value="DEPLOYEUR_CONCEPTION"/>
+      <xs:enumeration value="ADMINISTRATEUR_GLOBAL"/>
+      <xs:enumeration value="ADMINISTRATEUR_GESTION_DES_AFFAIRES"/>
+      <xs:enumeration value="ADMINISTRATEUR_PREPA_DEPLOIEMENT"/>
+      <xs:enumeration value="GESTIONNAIRE_LOCATIF_CIS"/>
+      <xs:enumeration value="GESTIONNAIRE_LOCATIF_SDC"/>
+      <xs:enumeration value="MANAGER_LOCATIF"/>
+      <xs:enumeration value="CONTROLEUR_QUALITE"/>
+      <xs:enumeration value="REFERENT_MAINTENANCE"/>
+      <xs:enumeration value="MANAGER_MAINTENANCE"/>
+      <xs:enumeration value="SUPERVISION_SIAS"/>
+      <xs:enumeration value="TECHNICIEN_CONCENTRATEUR"/>
+      <xs:enumeration value="DEPLOYEUR_CONCEPTION_MOBK"/>
+      <xs:enumeration value="DEPLOYEUR_CONCEPTION_REALISATION"/>
+      <xs:enumeration value="DEPLOYEUR_REALISATION"/>
+      <xs:enumeration value="OPERATEUR_ONLINE"/>
+      <xs:enumeration value="MANAGER_HOTLINE"/>
+      <xs:enumeration value="REFERENT_HOTLINE"/>
+      <xs:enumeration value="REFERENT_COMPTEUR"/>
+      <xs:enumeration value="MANAGER_COMPTEUR"/>
+      <xs:enumeration value="USG"/>
+      <xs:enumeration value="CORRECTEUR_COMPTEUR"/>
+      <xs:enumeration value="PLANIFICATEUR_CQ"/>
+      <xs:enumeration value="TECHNICIEN_COMPTEUR"/>
+      <xs:enumeration value="CONTROLEUR"/>
+      <xs:enumeration value="TECHNICIEN_MAINTENANCE"/>
+      <xs:enumeration value="MAGASINIER"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumOracleBooleen">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TRUE"/>
+      <xs:enumeration value="FALSE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumNatureAffaire">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SIMPLE"/>
+      <xs:enumeration value="COMPLET"/>
+      <xs:enumeration value="DEMONTAGE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ExceptionTechnique" type="tns:ExceptionTechnique"/>
+  <xs:complexType name="ExceptionTechnique">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="args" type="xs:anyType"/>
+      <xs:element minOccurs="0" name="isPrintedStackTrace" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="messageDetaille" type="xs:string"/>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExceptionFonctionnelle" type="tns:ExceptionFonctionnelle"/>
+  <xs:complexType name="ExceptionFonctionnelle">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="args" type="xs:anyType"/>
+      <xs:element minOccurs="0" name="isPrintedStackTrace" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="messageDetaille" type="xs:string"/>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExceptionInfrastructure" type="tns:ExceptionInfrastructure"/>
+  <xs:complexType name="ExceptionInfrastructure">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="args" type="xs:anyType"/>
+      <xs:element minOccurs="0" name="isPrintedStackTrace" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="messageDetaille" type="xs:string"/>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="deselectionnerPHSiteResponse">
+    <wsdl:part name="parameters" element="tns:deselectionnerPHSiteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="countAffairesEnCoursByUserResponse">
+    <wsdl:part name="parameters" element="tns:countAffairesEnCoursByUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesEnCoursByUserPaginateResponse">
+    <wsdl:part name="parameters" element="tns:getAffairesEnCoursByUserPaginateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesByIds">
+    <wsdl:part name="parameters" element="tns:getAffairesByIds">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="countNbAffairesByLotId">
+    <wsdl:part name="parameters" element="tns:countNbAffairesByLotId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffaireByTache">
+    <wsdl:part name="parameters" element="tns:getAffaireByTache">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffaireByIdResponse">
+    <wsdl:part name="parameters" element="tns:getAffaireByIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatutAffaireResponse">
+    <wsdl:part name="parameters" element="tns:updateStatutAffaireResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerAffaire">
+    <wsdl:part name="parameters" element="tns:creerAffaire">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerAffaireEtPointResponse">
+    <wsdl:part name="parameters" element="tns:creerAffaireEtPointResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="abandonnerAffaireResponse">
+    <wsdl:part name="parameters" element="tns:abandonnerAffaireResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="delotirAffairesByPoints">
+    <wsdl:part name="parameters" element="tns:delotirAffairesByPoints">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="lotirAffaires">
+    <wsdl:part name="parameters" element="tns:lotirAffaires">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesSuperviseesByUser">
+    <wsdl:part name="parameters" element="tns:getAffairesSuperviseesByUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ExceptionInfrastructure">
+    <wsdl:part name="ExceptionInfrastructure" element="tns:ExceptionInfrastructure">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="abandonnerAffaire">
+    <wsdl:part name="parameters" element="tns:abandonnerAffaire">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesByZdr">
+    <wsdl:part name="parameters" element="tns:getAffairesByZdr">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rechercheAffaireByNumero">
+    <wsdl:part name="parameters" element="tns:rechercheAffaireByNumero">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesSuperviseesByUserResponse">
+    <wsdl:part name="parameters" element="tns:getAffairesSuperviseesByUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatutAndEntiteByLotResponse">
+    <wsdl:part name="parameters" element="tns:updateStatutAndEntiteByLotResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesEnCoursByUserPaginate">
+    <wsdl:part name="parameters" element="tns:getAffairesEnCoursByUserPaginate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesRealisees">
+    <wsdl:part name="parameters" element="tns:getAffairesRealisees">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerAffaireResponse">
+    <wsdl:part name="parameters" element="tns:creerAffaireResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesEnCoursByUserResponse">
+    <wsdl:part name="parameters" element="tns:getAffairesEnCoursByUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesByPointHautAndStatuts">
+    <wsdl:part name="parameters" element="tns:getAffairesByPointHautAndStatuts">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEtudesCByZdrIdResponse">
+    <wsdl:part name="parameters" element="tns:getEtudesCByZdrIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ExceptionFonctionnelle">
+    <wsdl:part name="ExceptionFonctionnelle" element="tns:ExceptionFonctionnelle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deselectionnerPHSite">
+    <wsdl:part name="parameters" element="tns:deselectionnerPHSite">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesRealiseesResponse">
+    <wsdl:part name="parameters" element="tns:getAffairesRealiseesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="delotirAffairesByLotKIdResponse">
+    <wsdl:part name="parameters" element="tns:delotirAffairesByLotKIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesByPointHautResponse">
+    <wsdl:part name="parameters" element="tns:getAffairesByPointHautResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEtudesCByZdrId">
+    <wsdl:part name="parameters" element="tns:getEtudesCByZdrId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rechercheAffaireByNumeroResponse">
+    <wsdl:part name="parameters" element="tns:rechercheAffaireByNumeroResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerAffaireEtPoint">
+    <wsdl:part name="parameters" element="tns:creerAffaireEtPoint">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatutAffaire">
+    <wsdl:part name="parameters" element="tns:updateStatutAffaire">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesByZdrResponse">
+    <wsdl:part name="parameters" element="tns:getAffairesByZdrResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="lotirAffairesResponse">
+    <wsdl:part name="parameters" element="tns:lotirAffairesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesByIdsResponse">
+    <wsdl:part name="parameters" element="tns:getAffairesByIdsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="countNbAffairesByLotIdResponse">
+    <wsdl:part name="parameters" element="tns:countNbAffairesByLotIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="delotirAffairesByLotKId">
+    <wsdl:part name="parameters" element="tns:delotirAffairesByLotKId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffaireByTacheResponse">
+    <wsdl:part name="parameters" element="tns:getAffaireByTacheResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="delotirAffairesByPointsResponse">
+    <wsdl:part name="parameters" element="tns:delotirAffairesByPointsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ExceptionTechnique">
+    <wsdl:part name="ExceptionTechnique" element="tns:ExceptionTechnique">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesEnCoursByUser">
+    <wsdl:part name="parameters" element="tns:getAffairesEnCoursByUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatutAndEntiteByLot">
+    <wsdl:part name="parameters" element="tns:updateStatutAndEntiteByLot">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffaireById">
+    <wsdl:part name="parameters" element="tns:getAffaireById">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesByPointHautAndStatutsResponse">
+    <wsdl:part name="parameters" element="tns:getAffairesByPointHautAndStatutsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffairesByPointHaut">
+    <wsdl:part name="parameters" element="tns:getAffairesByPointHaut">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffaireParLotKEtManagerResponse">
+    <wsdl:part name="parameters" element="tns:getAffaireParLotKEtManagerResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="countAffairesEnCoursByUser">
+    <wsdl:part name="parameters" element="tns:countAffairesEnCoursByUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAffaireParLotKEtManager">
+    <wsdl:part name="parameters" element="tns:getAffaireParLotKEtManager">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IAffaireWebService">
+    <wsdl:operation name="updateStatutAffaire">
+      <wsdl:input name="updateStatutAffaire" message="tns:updateStatutAffaire">
+    </wsdl:input>
+      <wsdl:output name="updateStatutAffaireResponse" message="tns:updateStatutAffaireResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffaireByTache">
+      <wsdl:input name="getAffaireByTache" message="tns:getAffaireByTache">
+    </wsdl:input>
+      <wsdl:output name="getAffaireByTacheResponse" message="tns:getAffaireByTacheResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="rechercheAffaireByNumero">
+      <wsdl:input name="rechercheAffaireByNumero" message="tns:rechercheAffaireByNumero">
+    </wsdl:input>
+      <wsdl:output name="rechercheAffaireByNumeroResponse" message="tns:rechercheAffaireByNumeroResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesByZdr">
+      <wsdl:input name="getAffairesByZdr" message="tns:getAffairesByZdr">
+    </wsdl:input>
+      <wsdl:output name="getAffairesByZdrResponse" message="tns:getAffairesByZdrResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deselectionnerPHSite">
+      <wsdl:input name="deselectionnerPHSite" message="tns:deselectionnerPHSite">
+    </wsdl:input>
+      <wsdl:output name="deselectionnerPHSiteResponse" message="tns:deselectionnerPHSiteResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffaireById">
+      <wsdl:input name="getAffaireById" message="tns:getAffaireById">
+    </wsdl:input>
+      <wsdl:output name="getAffaireByIdResponse" message="tns:getAffaireByIdResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffaireParLotKEtManager">
+      <wsdl:input name="getAffaireParLotKEtManager" message="tns:getAffaireParLotKEtManager">
+    </wsdl:input>
+      <wsdl:output name="getAffaireParLotKEtManagerResponse" message="tns:getAffaireParLotKEtManagerResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="delotirAffairesByLotKId">
+      <wsdl:input name="delotirAffairesByLotKId" message="tns:delotirAffairesByLotKId">
+    </wsdl:input>
+      <wsdl:output name="delotirAffairesByLotKIdResponse" message="tns:delotirAffairesByLotKIdResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="countNbAffairesByLotId">
+      <wsdl:input name="countNbAffairesByLotId" message="tns:countNbAffairesByLotId">
+    </wsdl:input>
+      <wsdl:output name="countNbAffairesByLotIdResponse" message="tns:countNbAffairesByLotIdResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateStatutAndEntiteByLot">
+      <wsdl:input name="updateStatutAndEntiteByLot" message="tns:updateStatutAndEntiteByLot">
+    </wsdl:input>
+      <wsdl:output name="updateStatutAndEntiteByLotResponse" message="tns:updateStatutAndEntiteByLotResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesEnCoursByUserPaginate">
+      <wsdl:input name="getAffairesEnCoursByUserPaginate" message="tns:getAffairesEnCoursByUserPaginate">
+    </wsdl:input>
+      <wsdl:output name="getAffairesEnCoursByUserPaginateResponse" message="tns:getAffairesEnCoursByUserPaginateResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="countAffairesEnCoursByUser">
+      <wsdl:input name="countAffairesEnCoursByUser" message="tns:countAffairesEnCoursByUser">
+    </wsdl:input>
+      <wsdl:output name="countAffairesEnCoursByUserResponse" message="tns:countAffairesEnCoursByUserResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="creerAffaire">
+      <wsdl:input name="creerAffaire" message="tns:creerAffaire">
+    </wsdl:input>
+      <wsdl:output name="creerAffaireResponse" message="tns:creerAffaireResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="lotirAffaires">
+      <wsdl:input name="lotirAffaires" message="tns:lotirAffaires">
+    </wsdl:input>
+      <wsdl:output name="lotirAffairesResponse" message="tns:lotirAffairesResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesEnCoursByUser">
+      <wsdl:input name="getAffairesEnCoursByUser" message="tns:getAffairesEnCoursByUser">
+    </wsdl:input>
+      <wsdl:output name="getAffairesEnCoursByUserResponse" message="tns:getAffairesEnCoursByUserResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="delotirAffairesByPoints">
+      <wsdl:input name="delotirAffairesByPoints" message="tns:delotirAffairesByPoints">
+    </wsdl:input>
+      <wsdl:output name="delotirAffairesByPointsResponse" message="tns:delotirAffairesByPointsResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesByPointHautAndStatuts">
+      <wsdl:input name="getAffairesByPointHautAndStatuts" message="tns:getAffairesByPointHautAndStatuts">
+    </wsdl:input>
+      <wsdl:output name="getAffairesByPointHautAndStatutsResponse" message="tns:getAffairesByPointHautAndStatutsResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesByIds">
+      <wsdl:input name="getAffairesByIds" message="tns:getAffairesByIds">
+    </wsdl:input>
+      <wsdl:output name="getAffairesByIdsResponse" message="tns:getAffairesByIdsResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="creerAffaireEtPoint">
+      <wsdl:input name="creerAffaireEtPoint" message="tns:creerAffaireEtPoint">
+    </wsdl:input>
+      <wsdl:output name="creerAffaireEtPointResponse" message="tns:creerAffaireEtPointResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="abandonnerAffaire">
+      <wsdl:input name="abandonnerAffaire" message="tns:abandonnerAffaire">
+    </wsdl:input>
+      <wsdl:output name="abandonnerAffaireResponse" message="tns:abandonnerAffaireResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesRealisees">
+      <wsdl:input name="getAffairesRealisees" message="tns:getAffairesRealisees">
+    </wsdl:input>
+      <wsdl:output name="getAffairesRealiseesResponse" message="tns:getAffairesRealiseesResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesByPointHaut">
+      <wsdl:input name="getAffairesByPointHaut" message="tns:getAffairesByPointHaut">
+    </wsdl:input>
+      <wsdl:output name="getAffairesByPointHautResponse" message="tns:getAffairesByPointHautResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEtudesCByZdrId">
+      <wsdl:input name="getEtudesCByZdrId" message="tns:getEtudesCByZdrId">
+    </wsdl:input>
+      <wsdl:output name="getEtudesCByZdrIdResponse" message="tns:getEtudesCByZdrIdResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesSuperviseesByUser">
+      <wsdl:input name="getAffairesSuperviseesByUser" message="tns:getAffairesSuperviseesByUser">
+    </wsdl:input>
+      <wsdl:output name="getAffairesSuperviseesByUserResponse" message="tns:getAffairesSuperviseesByUserResponse">
+    </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle" message="tns:ExceptionFonctionnelle">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique" message="tns:ExceptionTechnique">
+    </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure" message="tns:ExceptionInfrastructure">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IAffaireWebServiceServiceSoapBinding" type="tns:IAffaireWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAffaireByTache">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAffaireByTache">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAffaireByTacheResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateStatutAffaire">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateStatutAffaire">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateStatutAffaireResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deselectionnerPHSite">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deselectionnerPHSite">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deselectionnerPHSiteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesByZdr">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAffairesByZdr">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAffairesByZdrResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="rechercheAffaireByNumero">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="rechercheAffaireByNumero">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="rechercheAffaireByNumeroResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffaireById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAffaireById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAffaireByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="delotirAffairesByLotKId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="delotirAffairesByLotKId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="delotirAffairesByLotKIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffaireParLotKEtManager">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAffaireParLotKEtManager">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAffaireParLotKEtManagerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="countNbAffairesByLotId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="countNbAffairesByLotId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="countNbAffairesByLotIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesEnCoursByUserPaginate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAffairesEnCoursByUserPaginate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAffairesEnCoursByUserPaginateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateStatutAndEntiteByLot">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateStatutAndEntiteByLot">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateStatutAndEntiteByLotResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="countAffairesEnCoursByUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="countAffairesEnCoursByUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="countAffairesEnCoursByUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="creerAffaire">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creerAffaire">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creerAffaireResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="lotirAffaires">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="lotirAffaires">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="lotirAffairesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesEnCoursByUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAffairesEnCoursByUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAffairesEnCoursByUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="delotirAffairesByPoints">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="delotirAffairesByPoints">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="delotirAffairesByPointsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesByPointHautAndStatuts">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAffairesByPointHautAndStatuts">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAffairesByPointHautAndStatutsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="creerAffaireEtPoint">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creerAffaireEtPoint">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creerAffaireEtPointResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesByIds">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAffairesByIds">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAffairesByIdsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="abandonnerAffaire">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="abandonnerAffaire">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="abandonnerAffaireResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesRealisees">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAffairesRealisees">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAffairesRealiseesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesByPointHaut">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAffairesByPointHaut">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAffairesByPointHautResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEtudesCByZdrId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getEtudesCByZdrId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEtudesCByZdrIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAffairesSuperviseesByUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAffairesSuperviseesByUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAffairesSuperviseesByUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExceptionFonctionnelle">
+        <soap:fault name="ExceptionFonctionnelle" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionTechnique">
+        <soap:fault name="ExceptionTechnique" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExceptionInfrastructure">
+        <soap:fault name="ExceptionInfrastructure" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="affaire">
+    <wsdl:port binding="tns:IAffaireWebServiceServiceSoapBinding" name="IAffaireWebServicePort">
+      <soap:address location="https://cis-sti-r72-sid.grdf.fr:453/cis_sti/ws/affaire"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -150,6 +150,8 @@ library(devtools); if (!require('emoGG', quietly = F)) devtools::install_github(
 # package ‘png’ successfully unpacked and MD5 sums checked
 # package ‘proto’ successfully unpacked and MD5 sums checked
 
+if (!require('googleVis', quietly = F)) install.packages("googleVis")
+
 # ----------------------------------------------------------------------
 # XML librairies
 # ----------------------------------------------------------------------

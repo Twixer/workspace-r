@@ -37,7 +37,7 @@ library(tidyr)
 raw_data <- read.csv("data/jobs.csv", header = TRUE, sep=";")
 #jobs <- c(t(raw_data["TYPEJOB"]))
 df <- data.frame(
-    jobs   = jobs,
+    jobs   = c(raw_data["TYPEJOB"]),
     debut  = c(raw_data["DEBUT"]),
     fin    = c(raw_data["FIN"]),
     etat   = c(raw_data["ETAT"])

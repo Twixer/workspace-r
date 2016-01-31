@@ -60,10 +60,40 @@ if (!require('installr', quietly = F)) install.packages("installr")
 # http://www.inside-r.org/packages/cran/log4r/docs/log4r
 if (!require('log4r', quietly = F)) install.packages("log4r")
 
-if (!require('fortunes', quietly = F)) install.packages("fortunes")
+if (!require('RSelenium', quietly = F)) install.packages("RSelenium")
+# package ‘RJSONIO’ successfully unpacked and MD5 sums checked
+# package ‘caTools’ successfully unpacked and MD5 sums checked
+# package ‘RSelenium’ successfully unpacked and MD5 sums checked
+
+if (!require('git2r', quietly = F)) install.packages("git2r")
+
+if (!require('Rtools', quietly = F)) install.packages("Rtools")
 
 # ----------------------------------------------------------------------
-# Data manipulation
+# Data sources
+# ----------------------------------------------------------------------
+
+library("devtools")
+
+# http://ropensci.org/tutorials/elastic_tutorial.html
+# https://github.com/ropensci/elastic
+if (!require('elastic', quietly = F)) install.packages("elastic") 
+
+# https://github.com/ropensci/nodbi
+if (!require('sofa', quietly = F)) devtools::install_github("ropensci/sofa")
+# package ‘httr’ successfully unpacked and MD5 sums checked
+# package ‘openssl’ successfully unpacked and MD5 sums checked
+# package ‘R6’ successfully unpacked and MD5 sums checked
+if (!require('etseed', quietly = F)) devtools::install_github("ropensci/etseed")
+if (!require('rrlite', quietly = F)) devtools::install_github("ropensci/rrlite")
+if (!require('RedisAPI', quietly = F)) devtools::install_github("ropensci/RedisAPI")
+if (!require('nodbi', quietly = F)) devtools::install_github("ropensci/nodbi")
+
+# https://github.com/hadley/readr
+if (!require('readr', quietly = F)) install.packages("readr")
+
+# ----------------------------------------------------------------------
+# Data manipulation and analysis
 # ----------------------------------------------------------------------
 
 if (!require('Amelia', quietly = F)) install.packages("Amelia") 
@@ -75,6 +105,11 @@ if (!require('dplyr', quietly = F)) install.packages("dplyr")
 # package ‘lazyeval’ successfully unpacked and MD5 sums checked
 # package ‘DBI’ successfully unpacked and MD5 sums checked
 # package ‘dplyr’ successfully unpacked and MD5 sums checked
+
+
+# https://github.com/twitter/AnomalyDetection
+library(devtools); if (!require('AnomalyDetection', quietly = F)) devtools::install_github("twitter/AnomalyDetection")
+# package ‘lubridate’ successfully unpacked and MD5 sums checked
 
 # ----------------------------------------------------------------------
 # Graphic librairies
@@ -108,6 +143,10 @@ if (!require('plotly', quietly = F)) install.packages("plotly")
 
 # http://www.r-bloggers.com/seeing-the-daylight-with-r/
 if (!require('maptools', quietly = F)) install.packages("maptools")
+
+library(devtools); if (!require('emoGG', quietly = F)) devtools::install_github("dill/emoGG")
+# package ‘png’ successfully unpacked and MD5 sums checked
+# package ‘proto’ successfully unpacked and MD5 sums checked
 
 # ----------------------------------------------------------------------
 # XML librairies
@@ -168,3 +207,13 @@ if (!require('proxy', quietly = F)) install.packages("proxy")
 
 # https://github.com/cuche27/campagnePresidentielle
 if (!require('FactoMineR', quietly = F)) install.packages("FactoMineR")
+
+if (!require('gender', quietly = F)) install.packages("gender")
+if (!require('genderdata', quietly = F)) install.packages("genderdata")
+
+
+# ----------------------------------------------------------------------
+# Misc.
+# ----------------------------------------------------------------------
+
+if (!require('fortunes', quietly = F)) install.packages("fortunes")

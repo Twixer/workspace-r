@@ -79,6 +79,8 @@ library("devtools")
 # https://github.com/ropensci/elastic
 if (!require('elastic', quietly = F)) install.packages("elastic") 
 
+if (!require('elasticdsl', quietly = F)) devtools::install_github("ropensci/elasticdsl")
+
 # https://github.com/ropensci/nodbi
 if (!require('sofa', quietly = F)) devtools::install_github("ropensci/sofa")
 # package ‘httr’ successfully unpacked and MD5 sums checked

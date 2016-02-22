@@ -2,29 +2,30 @@
 
 setwd("D:/applis/workspace-r/quick-and-dirty")
 
-library(ggplot2)
-library(reshape2)
+# library(ggplot2)
+# library(reshape2)
 
 # Modify the "sample.csv" to be the name of your file target. 
 # Make sure you have headers of: Task, Start, Finish, Critical OR modify the below to reflect column count.
-rawschedule <- read.csv("sample.csv", header = TRUE)
-tasks <- c(t(rawschedule["Task"]))
-dfr <- data.frame(
-    name        = factor(tasks, levels = tasks),
-    start.date  = c(rawschedule["Start"]),
-    end.date    = c(rawschedule["Finish"]),
-    is.critical = c(rawschedule["Critical"])
-)
-mdfr <- melt(dfr, measure.vars = c("Start", "Finish"))
+# rawschedule <- read.csv("sample.csv", header = TRUE)
+# tasks <- c(t(rawschedule["Task"]))
+# dfr <- data.frame(
+#     name        = factor(tasks, levels = tasks),
+#     start.date  = c(rawschedule["Start"]),
+#     end.date    = c(rawschedule["Finish"]),
+#     is.critical = c(rawschedule["Critical"])
+# )
+# mdfr <- melt(dfr, measure.vars = c("Start", "Finish"))
 
 #generates the plot
-ggplot(mdfr, aes(as.Date(value, "%m/%d/%Y"), name, colour = Critical)) +
-    geom_line(size = 6) +
-    xlab("Duration") + ylab("Tasks") +
-    theme_bw()
+# ggplot(mdfr, aes(as.Date(value, "%m/%d/%Y"), name, colour = Critical)) +
+#     geom_line(size = 6) +
+#     xlab("Duration") + ylab("Tasks") +
+#     theme_bw()
 
 
 # ------------------------------------------
+setwd("D:/applis/workspace-r/quick-and-dirty")
 
 library(ggplot2)
 library(reshape2)
@@ -73,7 +74,11 @@ ggplot(melted_jobs, aes(x=value, y=jobs, colour=etat)) +
     geom_line(size = 6) +
     xlab("Duration") + ylab("Jobs") +
     theme_bw()+
-    theme(axis.text.x=element_text(angle = 90, vjust = 0.5)) # http://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2
+    theme(axis.text.x = element_text(angle = 30, hjust = 1))
+    
+    theme(axis.text.x=element_text(angle = -30, hjust = 0))
+    theme(axis.text.x=element_text(angle = 30, vjust = 0.5)) # http://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2
+    
     
     #opts(axis.text.x=theme_text(angle=90, hjust=1))
 
